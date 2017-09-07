@@ -1,5 +1,5 @@
 ---
-title: "Page 2"
+title: "Captain's Log"
 author: "Samuel Pshyk"
 date: "9/7/2017"
 output: html_document
@@ -13,4 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This is the second page of my website. 
 
+making a change seems to mean I need to knit the file again. 
 
+I wonder how to make this pretty!
+I wonder how long a line of text can take before it moves it to the next line on the displayed webpage. It seems weird to me that it would stretch out the length of it indefinityly but hey, I didn't design this program. I guess we'll see what happens when I load it.
