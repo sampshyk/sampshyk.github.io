@@ -4,8 +4,9 @@ author: "Nickleback"
 output: html_document
 ---
 
-```{ r, echo = FALSE}
-knitr::include_graphics("./images/nickel.jpeg")
+
+```{r, echo=FALSE}
+knitr::include_graphics("./img/nickel.jpeg")
 ```
 
 ## Lyrics
