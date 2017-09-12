@@ -3,6 +3,10 @@ title: "Photograph"
 author: "Nickleback"
 output: html_document
 ---
+```{ r, echo = FALSE}
+knitr::include_graphics("./images/nickelback-photograph.jpg")
+```
+
 ## Lyrics
 
 Look at this photograph
