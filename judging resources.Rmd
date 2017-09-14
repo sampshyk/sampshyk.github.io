@@ -1,0 +1,17 @@
+---
+title: Judging Resources
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+  
+### ** POLICY DOCUMENTS **
+  
+  Here are some links to the most recent Konami Policy Documents. 
+
+  ** Tournament Policy ** : 
