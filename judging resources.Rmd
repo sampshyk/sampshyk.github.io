@@ -1,6 +1,9 @@
 ---
 title: Judging Resources
-output: html_document
+output:
+    html_document:
+      css: faded.css
+
 ---
   
 ```{r setup, include=FALSE}
@@ -10,8 +13,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
   
-### ** POLICY DOCUMENTS **
+# **POLICY DOCUMENTS**
   
   Here are some links to the most recent Konami Policy Documents. 
 
-  ** Tournament Policy ** : 
+  [**Tournament Policy**](http://www.yugioh-card.com/it/gameplay/rulings/KDE_TCG_TournamentPolicy_v1.3_2013February01.pdf)
+  [**Penalty Guidelines**](http://www.yugioh-card.com/uk/gameplay/rulings/Penalty_Guidelines_1_4.pdf)
+  

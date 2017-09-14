@@ -25,3 +25,6 @@ Ive shown how to alter the title and the ## command will allow you to create a t
 ## Captains log: commit 9 I think
 
 I've decided to use my project to create a website to link useful documents that may be hard to find for other Yu-Gi-Oh judges. Im having some issues creating a new link to it though. As a personal note, if the name of a page is 2 or more words seperated by a space, in the site directory, replace the spaces with underscores. 
+
+## Captains log: commit 9. 
+I miscounted the number of commits I had up to this point. We're actually on commit number 9. We added a link to the tournament policy document for the judging resource page. I'm going to continue to add all 3 policy documents and go from there. 
