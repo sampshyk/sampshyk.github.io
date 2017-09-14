@@ -18,5 +18,16 @@ knitr::opts_chunk$set(echo = TRUE)
   Here are some links to the most recent Konami Policy Documents. 
 
   [**Tournament Policy**](http://www.yugioh-card.com/it/gameplay/rulings/KDE_TCG_TournamentPolicy_v1.3_2013February01.pdf)
+  
   [**Penalty Guidelines**](http://www.yugioh-card.com/uk/gameplay/rulings/Penalty_Guidelines_1_4.pdf)
   
+## **Rules Resources**
+
+Here are some links to some rules related articles on PSCT and the most recent verion of the Yu-Gi-Oh! Rulebook
+
+[Here](http://www.yugioh-card.com/en/rulebook/) is a link where you can download the most recent version of the Official Yu-Gi-Oh! rulebook.
+
+## 
+```{r, echo=FALSE}
+knitr::include_graphics("./img/flow_chart.jpeg")
+```
