@@ -11,4 +11,6 @@ navbar:
     href: "Photograph.html"
   - text: "Judging Resources"
     href: judging_resources.html
+  - text: "PSCT"
+    href: psct.html
     

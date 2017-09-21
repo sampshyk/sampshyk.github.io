@@ -1,0 +1,8 @@
+---
+  title: PSCT and YOU!
+  output: html_document
+---
+## Introduction
+
+Problem Solving Card Text represents a huge step forward in the Yu-Gi-Oh Trading Card Game. It helps both players and judges alike understand the way cards work by giving us a consistant wording for all card effects. While all new cards are printed with PSCT, some old cards have yet to recieve an updated card text but fear not, with reprints of old cards come new wordings to their effect! In this page we will cover how the cards of today read!
+
