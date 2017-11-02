@@ -43,12 +43,12 @@ weather <- read.csv(file = "weather.csv", header = TRUE,
                     stringsAsFactors = FALSE)
 ```
 ## **Introduction**
-This report and analysis on Seattle's bicycle sharing trends. The data includes weather reports for the area, the station locations, and trips taken by cycle riders. Future explorations could include the addition of other forms of public transportation for the Seatle area to better understand commuter travel trends. We also hope to use this report to make a good grade in the fabulous Dr. Arnholt's Stats 3530 Data Science class.
+This report and analysis on Seattle's bicycle sharing trends. The data includes weather reports for the area, the station locations, and trips taken by cycle riders. Future explorations could include the addition of other forms of public transportation for the Seatle area to better understand commuter travel trends.
 
 ## **Station Locations**
 Lets take a look at where the rental stations are located in Seattle!
 
-```{r, label = "stationLocs"}
+```{r, label = "stationLocs", }
 #For show (the graphs , THE EVI-DANCE) Formating the dates
 station$install_date <- mdy(station$install_date)
 
@@ -82,7 +82,7 @@ ggmap(closeUp) + geom_point(aes(x = long, y = lat), data = station_locs,
 ```
 
 
-Look at all those stations! Its hard to believe they managed to go out of business!
+Look at all those stations!
 
 
 ## Histogram of Number of Bikes per Station
@@ -94,7 +94,7 @@ ggplot(data = station, aes (x = current_dockcount)) +
   theme_classic() +
   labs( x = "Number of bikes per station", y= "count", title = "Current Dock Count")
 ```
-
+Here is a histogram of the number of bikes per station. 
 
 
 
@@ -116,7 +116,7 @@ ggmap(closeUp) +
   guides(color = guide_legend(title = "change"), size = guide_legend(title = "change")) +
   scale_size_manual(values = 10:1)
 ```
-
+Here is a map of how many times dock changed occured per station. 
 
 ```{r, label = "currentStationSize", fig.cap="Current Station Size", warning = FALSE, message = FALSE}
 currDockSize <- station %>% 
