@@ -9,11 +9,11 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+# This page is a quick reference to different tournament documents as well as documents which are important to know for beginner and experienced judges alike
 
 
   
-# **POLICY DOCUMENTS**
+## **POLICY DOCUMENTS**
   
   Here are some links to the most recent Konami Policy Documents. 
 
@@ -29,7 +29,6 @@ Here are some links to some rules related articles on PSCT and the most recent v
 
 ## Fast Effect Timing Chart
 This chart is one of the most important things to understand in Yu-Gi-Oh!. It is the fast effect timing chart and is a graphic which allows us to understand the breakdown of how the gamestate functions. As a judge, it helps answer many player questions when players inadvertantly create improper gamestates for one reason or another. 
-
 
 ```{r, echo=FALSE}
 knitr::include_graphics("./img/flow_chart.jpeg")

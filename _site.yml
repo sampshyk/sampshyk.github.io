@@ -13,4 +13,5 @@ navbar:
     href: judging_resources.html
   - text: "PSCT"
     href: psct.html
-    
+  - text: Cycle_Sharing
+    href: CycleSharingProj.Rmd
