@@ -209,28 +209,21 @@ Trip_Duration_Month %>%
 ```
 
 #Number of Trips by Day of Week
-```{r, eval = FALSE, label = "dayOfWeekSeasons", fig.cap="Number of Trips by Day of Week", echo=FALSE}
-# trip_2$wd <- wday(trip_2$start_date, label = TRUE)
-# tripduration_m <- (trip_2$tripduration)/60
-# trip22<-trip_2
-# trip22<-cbind(trip22, tripduration_m)
-# 
-# 
-# trip23 <-mutate(trip22, Season = ifelse(ym %in% c("2014/10", "2014/11"), "Fall",
-#                                      ifelse(ym %in% c("2014/12", "2015/1", "2015/2"), "Winter",
-#                                      ifelse(ym %in% c("2015/3", "2015/4", "2015/5"), "Spring", "Summer"))))%>%
-#   group_by(Season)
-# 
-# ggplot(data = trip22, aes (x = wd, y = tripduration_m, col = Season, group = Season)) +
-#   geom_point() +
-#   geom_line() + 
-#   theme_classic() +
-#   labs( x = "Day of the Week", y= "Number of Trips", title = "Trips Per Day")
-# 
+```{r, , label = "dayOfWeekSeasons", fig.cap="Number of Trips by Day of Week", echo=FALSE}
+ trip_2$wd <- wday(trip_2$start_date, label = TRUE)
+ tripduration_m <- (trip_2$tripduration)/60
+ trip22<-trip_2
+ trip22<-cbind(trip22, tripduration_m)
+ ym <- format(trip22$start_date, "%Y/%m")
+ trip22<- cbind(trip22,ym)
+ 
+ trip22 <-mutate(trip22, Season = ifelse(ym %in% c("2014/10", "2014/11"), "Fall",
+                                      ifelse(ym %in% c("2014/12", "2015/1", "2015/2"), "Winter",
+                                      ifelse(ym %in% c("2015/3", "2015/4", "2015/5"), "Spring", "Summer"))))%>%
+   group_by(Season)
+ 
 
-
-  
-start_date_ym %>%
+trip22 %>%
   group_by(wd, Season) %>%
   summarize(N = n())%>%
   ggplot(aes(x = wd, y = N, col = Season, fill = Season, group = Season)) + 
@@ -244,7 +237,6 @@ start_date_ym %>%
 
 
 
-#Be Done up to this Chunk
 ```{r, eval=FALSE, label = "timeOfDaySeasons", fig.cap="Number of Trips by Time of Day", message = FALSE, echo=FALSE}
 #Number of Trips Per Time of Day
 

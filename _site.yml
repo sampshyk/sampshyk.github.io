@@ -5,7 +5,7 @@ navbar:
   left:
   - text: "Home"
     href: index.html
-  - text: "Page 2"
+  - text: "Build Notes"
     href: page2.html
   - text: "Photos"
     href: "Photograph.html"
