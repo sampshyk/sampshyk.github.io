@@ -14,4 +14,4 @@ navbar:
   - text: "PSCT"
     href: psct.html
   - text: "Cycle_Sharing"
-    href: CycleSharingProj.Rmd
+    href: CycleSharingProj.html

@@ -1,0 +1,42 @@
+---
+title: "Verizon"
+author: "Samuel Pshyk"
+date: "10/31/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+Ver <- read.csv("http://www1.appstate.edu/~arnholta/Data/Verizon.csv")
+Ver
+```
+
+```{r}
+q_groups <- Ver %>%
+  group_by(Group)%>%
+  summarise(Q3 = quantile(Time, probs = .75))
+
+
+
+
+
+
+ggplot(data = Ver, aes(x = Time))+
+  geom_density(aes(fill = Group))+
+  facet_grid(.~Group)+
+  scale_fill_manual(values = c("pink", "lightblue"))+
+  theme_bw()+
+  guides(fill= FALSE)+
+  geom_vline(data = q_groups, aes(xintercept = Q3, linetype = "dotdash"))
+```
+
+
+
+
+
