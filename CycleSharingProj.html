@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Hannah Xiao Si Laws, Sammy Pshyk, Megan Gillis" />
+
+
+<title>Seattle’s Cycle Sharing Analysis</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Page</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="page2.html">Page 2</a>
+</li>
+<li>
+  <a href="Photograph.html">Photos</a>
+</li>
+<li>
+  <a href="judging_resources.html">Judging Resources</a>
+</li>
+<li>
+  <a href="CycleSharingProj.html">Cycle Sharing</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Seattle’s Cycle Sharing Analysis</h1>
+<h4 class="author"><em>Hannah Xiao Si Laws, Sammy Pshyk, Megan Gillis</em></h4>
+
+</div>
+
+
+<p>We find the orignal information <a href="https://proquestionasker.github.io/projects/2016/11/10/bicyclesseattle/">here</a>.</p>
+<div id="introduction" class="section level2">
+<h2><strong>Introduction</strong></h2>
+<p>This report and analysis on Seattle’s bicycle sharing trends. The data includes weather reports for the area, the station locations, and trips taken by cycle riders. Future explorations could include the addition of other forms of public transportation for the Seatle area to better understand commuter travel trends.</p>
+</div>
+<div id="station-locations" class="section level2">
+<h2><strong>Station Locations</strong></h2>
+<p>Lets take a look at where the rental stations are located in Seattle!</p>
+<pre class="r"><code>#For show (the graphs , THE EVI-DANCE) Formating the dates
+station$install_date &lt;- mdy(station$install_date)
+
+
+# How many times were new stations installed?
+station %&gt;% summarise(n_distinct(install_date))</code></pre>
+<pre><code>##   n_distinct(install_date)
+## 1                        9</code></pre>
+<pre class="r"><code># How many stations were installed on each date
+station %&gt;% group_by(install_date) %&gt;% summarise(count = n()) %&gt;% 
+  arrange(install_date)</code></pre>
+<pre><code>## # A tibble: 9 x 2
+##   install_date count
+##         &lt;date&gt; &lt;int&gt;
+## 1   2014-10-13    50
+## 2   2015-05-22     1
+## 3   2015-06-12     1
+## 4   2015-07-27     1
+## 5   2015-09-15     1
+## 6   2015-10-29     1
+## 7   2016-03-18     1
+## 8   2016-07-03     1
+## 9   2016-08-09     1</code></pre>
+<pre class="r"><code>station %&gt;% summarise(n_distinct(station_id))</code></pre>
+<pre><code>##   n_distinct(station_id)
+## 1                     58</code></pre>
+<pre class="r"><code>station_locs &lt;- station %&gt;% group_by(station_id) %&gt;% select(1:4, -2)
+
+mymap &lt;- get_map(location = c(lat = 47.60, lon = -122.35), maptype = &quot;roadmap&quot;, zoom = 12)</code></pre>
+<pre><code>## note : locations should be specified in the lon/lat format, not lat/lon.</code></pre>
+<pre><code>## Map from URL : http://maps.googleapis.com/maps/api/staticmap?center=47.6,-122.35&amp;zoom=12&amp;size=640x640&amp;scale=2&amp;maptype=roadmap&amp;language=en-EN&amp;sensor=false</code></pre>
+<pre class="r"><code># Plot a single point for each Station ID
+ggmap(mymap) + geom_point(aes(x = long, y = lat), data = station_locs, 
+                          alpha = 1, color = &quot;darkred&quot;, size = 2)</code></pre>
+<p><img src="CycleSharingProj_files/figure-html/stationLocs-1.png" width="672" /></p>
+<pre class="r"><code>closeUp &lt;- get_map(location = &quot;Seattle&quot;, maptype = &quot;roadmap&quot;, zoom = 13)
+
+# Plot a single point for each Station ID
+ggmap(closeUp) + geom_point(aes(x = long, y = lat), data = station_locs, 
+                            alpha = 1, color = &quot;darkred&quot;, size = 3)</code></pre>
+<div class="figure">
+<img src="CycleSharingProj_files/figure-html/closeUp-1.png" alt="Stations map Zoomed In" width="672" />
+<p class="caption">
+Stations map Zoomed In
+</p>
+</div>
+<p>Look at all those stations!</p>
+</div>
+<div id="histogram-of-number-of-bikes-per-station" class="section level2">
+<h2>Histogram of Number of Bikes per Station</h2>
+<div class="figure">
+<img src="CycleSharingProj_files/figure-html/nbs-1.png" alt="Current Dock Count" width="672" />
+<p class="caption">
+Current Dock Count
+</p>
+</div>
+<p>Here is a histogram of the number of bikes per station.</p>
+<pre class="r"><code>dock_change &lt;- station %&gt;% 
+               group_by(station_id) %&gt;% 
+               select(station_id, long, lat, ends_with(&quot;dockcount&quot;)) %&gt;% 
+               mutate(dock_change = current_dockcount -install_dockcount)
+
+
+#attempt to recreate map plot thing
+
+closeUp &lt;- get_map(location = &quot;Seattle&quot;, maptype = &quot;roadmap&quot;, zoom = 13)
+
+ggmap(closeUp) + 
+  geom_point(aes(x = long, y = lat, size = factor(dock_change), color = factor(dock_change)), data = dock_change, alpha = 0.8) + 
+  guides(color = guide_legend(title = &quot;change&quot;), size = guide_legend(title = &quot;change&quot;)) +
+  scale_size_manual(values = 10:1)</code></pre>
+<div class="figure">
+<img src="CycleSharingProj_files/figure-html/bikesPerStation-1.png" alt="Change in Number of Bike Docks Per Station" width="672" />
+<p class="caption">
+Change in Number of Bike Docks Per Station
+</p>
+</div>
+<p>Here is a map of how many times dock changed occured per station.</p>
+<pre class="r"><code>currDockSize &lt;- station %&gt;% 
+               group_by(station_id) %&gt;% 
+               select(station_id, long, lat, ends_with(&quot;dockcount&quot;)) %&gt;% 
+               mutate(currDockSize = current_dockcount)
+
+closeUp &lt;- get_map(location = &quot;Seattle&quot;, maptype = &quot;roadmap&quot;, zoom = 13)
+
+ggmap(closeUp) + 
+  geom_point(aes(x = long, y = lat, size = factor(currDockSize), color = factor(currDockSize)), data = currDockSize, alpha = 0.8) + 
+  guides(color = guide_legend(title = &quot;change&quot;), size = guide_legend(title = &quot;change&quot;)) +
+  scale_size_manual(values = 10:1)</code></pre>
+<div class="figure">
+<img src="CycleSharingProj_files/figure-html/currentStationSize-1.png" alt="Current Station Size" width="672" />
+<p class="caption">
+Current Station Size
+</p>
+</div>
+<p>11 stations lost bike docks, 39 docks stayed the same, 8 stations gained docks.</p>
+<pre class="r"><code># Make the start and stop dates into POSIXct objects
+trip_2 &lt;- trip %&gt;% mutate(start_dt = mdy_hm(starttime), stop_dt = mdy_hm(stoptime))
+
+trip_2 &lt;- trip_2 %&gt;% mutate(start_date = paste(month(start_dt), 
+                                               day(start_dt), year(start_dt), sep = &quot;/&quot;))
+trip_2$start_date &lt;- mdy(trip_2$start_date)
+
+trip_2 &lt;- trip_2 %&gt;% mutate(stop_date = paste(month(stop_dt), 
+                                              day(stop_dt), year(stop_dt), sep = &quot;/&quot;))
+trip_2$stop_date &lt;- mdy(trip_2$stop_date)
+
+
+# Recode the dates
+trip_2 %&gt;% 
+  
+  group_by(start_date) %&gt;%
+  
+  summarize(N = n()) %&gt;%
+  
+  ggplot(aes(x = start_date, y = N)) + 
+  
+  geom_line() + 
+  
+  labs(x = &quot;Date&quot;, y = &quot;Number of trips per day&quot;) + 
+  
+  theme_bw() + geom_smooth()</code></pre>
+<div class="figure">
+<img src="CycleSharingProj_files/figure-html/visualRidesPerDay-1.png" alt="Time to visualize the number of rides per day" width="672" />
+<p class="caption">
+Time to visualize the number of rides per day
+</p>
+</div>
+</div>
+<div id="plotting-trips-per-month-by-season-minus-summer" class="section level1">
+<h1>Plotting trips per month (by season, minus summer)</h1>
+<pre class="r"><code>start_date_ym &lt;- trip_2 %&gt;% 
+  mutate(ym = paste(year(start_date), 
+                    month(start_date), sep = &quot;/&quot;), Season = ifelse(ym %in% c(&quot;2014/10&quot;, &quot;2014/11&quot;), &quot;Fall&quot;,
+                                                            ifelse(ym %in% c(&quot;2014/12&quot;, &quot;2015/1&quot;, &quot;2015/2&quot;), &quot;Winter&quot;,
+                                                            ifelse(ym %in% c(&quot;2015/3&quot;, &quot;2015/4&quot;, &quot;2015/5&quot;), &quot;Spring&quot;, &quot;Summer&quot;))))
+
+start_date_ym %&gt;%
+  group_by(ym, Season) %&gt;%
+  summarize(N=n()) %&gt;%
+  ggplot(aes(x = ym, y = N, color = Season, fill = Season, group = Season)) + 
+  geom_point() +
+  geom_line(group = 1) + 
+  labs( x = &quot;Date&quot;, y = &quot;Number of Trips(per month)&quot;)</code></pre>
+<div class="figure">
+<img src="CycleSharingProj_files/figure-html/monthSeason-1.png" alt="Trips Per Month (By Season)" width="672" />
+<p class="caption">
+Trips Per Month (By Season)
+</p>
+</div>
+</div>
+<div id="convert-trip-duration-from-seconds-to-minutes" class="section level1">
+<h1>Convert Trip Duration from Seconds to Minutes</h1>
+<pre class="r"><code>Trip_Duration_Month &lt;- start_date_ym %&gt;% 
+  mutate(trip_duration_min = tripduration/60) %&gt;% 
+  group_by(ym) %&gt;% 
+  select(ym, trip_duration_min, Season) %&gt;% 
+  summarise(Avg = mean(trip_duration_min), 
+            sd = sd(trip_duration_min)) %&gt;% 
+  mutate(se = sd/sqrt(n()), Season = ifelse(ym %in% c(&quot;2014/10&quot;, &quot;2014/11&quot;), &quot;Fall&quot;,
+                                     ifelse(ym %in% c(&quot;2014/12&quot;, &quot;2015/1&quot;, &quot;2015/2&quot;), &quot;Winter&quot;,
+                                     ifelse(ym %in% c(&quot;2015/3&quot;, &quot;2015/4&quot;, &quot;2015/5&quot;), &quot;Spring&quot;, &quot;Summer&quot;))))
+
+Trip_Duration_Month %&gt;%
+  ggplot(aes(x = ym, y = Avg, col = Season, fill = Season, group = Season)) + 
+  geom_point()+
+  geom_line(aes(group = 1)) + 
+  labs(x = &quot;Date&quot; , y = &quot;Duration of Average Trip (minutes)&quot;) + 
+  theme_bw() + 
+  geom_errorbar(aes(ymin = Avg - se, ymax = Avg + se))</code></pre>
+<div class="figure">
+<img src="CycleSharingProj_files/figure-html/minutesSeason-1.png" alt="Average Trip Duration" width="672" />
+<p class="caption">
+Average Trip Duration
+</p>
+</div>
+</div>
+<div id="number-of-trips-by-day-of-week" class="section level1">
+<h1>Number of Trips by Day of Week</h1>
+<pre class="r"><code># trip_2$wd &lt;- wday(trip_2$start_date, label = TRUE)
+# tripduration_m &lt;- (trip_2$tripduration)/60
+# trip22&lt;-trip_2
+# trip22&lt;-cbind(trip22, tripduration_m)
+# 
+# 
+# trip23 &lt;-mutate(trip22, Season = ifelse(ym %in% c(&quot;2014/10&quot;, &quot;2014/11&quot;), &quot;Fall&quot;,
+#                                      ifelse(ym %in% c(&quot;2014/12&quot;, &quot;2015/1&quot;, &quot;2015/2&quot;), &quot;Winter&quot;,
+#                                      ifelse(ym %in% c(&quot;2015/3&quot;, &quot;2015/4&quot;, &quot;2015/5&quot;), &quot;Spring&quot;, &quot;Summer&quot;))))%&gt;%
+#   group_by(Season)
+# 
+# ggplot(data = trip22, aes (x = wd, y = tripduration_m, col = Season, group = Season)) +
+#   geom_point() +
+#   geom_line() + 
+#   theme_classic() +
+#   labs( x = &quot;Day of the Week&quot;, y= &quot;Number of Trips&quot;, title = &quot;Trips Per Day&quot;)
+# 
+
+
+  
+start_date_ym %&gt;%
+  group_by(wd, Season) %&gt;%
+  summarize(N = n())%&gt;%
+  ggplot(aes(x = wd, y = N, col = Season, fill = Season, group = Season)) + 
+  geom_point() + 
+  geom_line() + 
+  theme_bw() + 
+  labs(x = &quot;Day of the Week&quot;, y= &quot;Number of Trips&quot;, title = &quot;Trips Per Day&quot;)</code></pre>
+</div>
+<div id="be-done-up-to-this-chunk" class="section level1">
+<h1>Be Done up to this Chunk</h1>
+<pre class="r"><code>#Number of Trips Per Time of Day
+
+start_date_ym%&gt;%
+  group_by(starttime,wd, Season)%&gt;%
+  summarize(N = n()) %&gt;%
+  ggplot(aes(x = starttime, y= N, col = Season, fill = Season, group = Season)) +
+  geom_point() +
+  geom_line() + 
+  facet_grid(.~wd) + 
+  labs(x = &quot;Hour of Day&quot;, y = &quot;Number of Trips&quot;)</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

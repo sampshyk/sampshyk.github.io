@@ -12,6 +12,4 @@ navbar:
   - text: "Judging Resources"
     href: judging_resources.html
   - text: "Cycle Sharing"
-    href: psct.html
-  - text: "Cycle_Sharing"
     href: CycleSharingProj.html
