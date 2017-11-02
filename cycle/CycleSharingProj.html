@@ -125,7 +125,7 @@ $(document).ready(function () {
 <p>We find the orignal information <a href="https://proquestionasker.github.io/projects/2016/11/10/bicyclesseattle/">here</a>.</p>
 <div id="introduction" class="section level2">
 <h2><strong>Introduction</strong></h2>
-<p>This report and analysis on Seattle’s bicycle sharing trends. The data includes weather reports for the area, the station locations, and trips taken by cycle riders. Future explorations could include the addition of other forms of public transportation for the Seatle area to better understand commuter travel trends. We also hope to use this report to make a good grade in the fabulous Dr. Arnholt’s Stats 3530 Data Science class.</p>
+<p>This report and analysis on Seattle’s bicycle sharing trends. The data includes weather reports for the area, the station locations, and trips taken by cycle riders. Future explorations could include the addition of other forms of public transportation for the Seatle area to better understand commuter travel trends.</p>
 </div>
 <div id="station-locations" class="section level2">
 <h2><strong>Station Locations</strong></h2>
@@ -176,7 +176,7 @@ ggmap(closeUp) + geom_point(aes(x = long, y = lat), data = station_locs,
 Stations map Zoomed In
 </p>
 </div>
-<p>Look at all those stations! Its hard to believe they managed to go out of business!</p>
+<p>Look at all those stations!</p>
 </div>
 <div id="histogram-of-number-of-bikes-per-station" class="section level2">
 <h2>Histogram of Number of Bikes per Station</h2>
@@ -186,6 +186,7 @@ Stations map Zoomed In
 Current Dock Count
 </p>
 </div>
+<p>Here is a histogram of the number of bikes per station.</p>
 <pre class="r"><code>dock_change &lt;- station %&gt;% 
                group_by(station_id) %&gt;% 
                select(station_id, long, lat, ends_with(&quot;dockcount&quot;)) %&gt;% 
@@ -206,6 +207,7 @@ ggmap(closeUp) +
 Change in Number of Bike Docks Per Station
 </p>
 </div>
+<p>Here is a map of how many times dock changed occured per station.</p>
 <pre class="r"><code>currDockSize &lt;- station %&gt;% 
                group_by(station_id) %&gt;% 
                select(station_id, long, lat, ends_with(&quot;dockcount&quot;)) %&gt;% 
