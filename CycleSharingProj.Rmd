@@ -48,7 +48,7 @@ This report and analysis on Seattle's bicycle sharing trends. The data includes 
 ## **Station Locations**
 Lets take a look at where the rental stations are located in Seattle!
 
-```{r, label = "stationLocs", }
+```{r, label = "stationLocs", echo=FALSE}
 #For show (the graphs , THE EVI-DANCE) Formating the dates
 station$install_date <- mdy(station$install_date)
 
@@ -100,7 +100,7 @@ Here is a histogram of the number of bikes per station.
 
 
 
-```{r, label = "bikesPerStation", fig.cap="Change in Number of Bike Docks Per Station", warning = FALSE, message=FALSE}
+```{r, label = "bikesPerStation", fig.cap="Change in Number of Bike Docks Per Station", warning = FALSE, message=FALSE, echo=FALSE}
 dock_change <- station %>% 
                group_by(station_id) %>% 
                select(station_id, long, lat, ends_with("dockcount")) %>% 
@@ -118,7 +118,7 @@ ggmap(closeUp) +
 ```
 Here is a map of how many times dock changed occured per station. 
 
-```{r, label = "currentStationSize", fig.cap="Current Station Size", warning = FALSE, message = FALSE}
+```{r, label = "currentStationSize", fig.cap="Current Station Size", warning = FALSE, message = FALSE, echo=FALSE}
 currDockSize <- station %>% 
                group_by(station_id) %>% 
                select(station_id, long, lat, ends_with("dockcount")) %>% 
@@ -136,7 +136,7 @@ ggmap(closeUp) +
 11 stations lost bike docks, 39 docks stayed the same, 8 stations gained docks.
 
 
-```{r, label = "visualRidesPerDay", fig.cap="Time to visualize the number of rides per day", message = FALSE}
+```{r, label = "visualRidesPerDay", fig.cap="Time to visualize the number of rides per day", message = FALSE, echo=FALSE}
 # Make the start and stop dates into POSIXct objects
 trip_2 <- trip %>% mutate(start_dt = mdy_hm(starttime), stop_dt = mdy_hm(stoptime))
 
@@ -168,7 +168,7 @@ trip_2 %>%
 ```
 
 #Plotting trips per month (by season, minus summer)
-```{r, label = "monthSeason", fig.cap="Trips Per Month (By Season)"}
+```{r, label = "monthSeason", fig.cap="Trips Per Month (By Season)", echo=FALSE}
 start_date_ym <- trip_2 %>% 
   mutate(ym = paste(year(start_date), 
                     month(start_date), sep = "/"), Season = ifelse(ym %in% c("2014/10", "2014/11"), "Fall",
@@ -187,7 +187,7 @@ start_date_ym %>%
 
 
 # Convert Trip Duration from Seconds to Minutes
-```{r, label = "minutesSeason", fig.cap="Average Trip Duration"}
+```{r, label = "minutesSeason", fig.cap="Average Trip Duration", echo=FALSE}
 Trip_Duration_Month <- start_date_ym %>% 
   mutate(trip_duration_min = tripduration/60) %>% 
   group_by(ym) %>% 
@@ -209,7 +209,7 @@ Trip_Duration_Month %>%
 ```
 
 #Number of Trips by Day of Week
-```{r, eval = FALSE, label = "dayOfWeekSeasons", fig.cap="Number of Trips by Day of Week"}
+```{r, eval = FALSE, label = "dayOfWeekSeasons", fig.cap="Number of Trips by Day of Week", echo=FALSE}
 # trip_2$wd <- wday(trip_2$start_date, label = TRUE)
 # tripduration_m <- (trip_2$tripduration)/60
 # trip22<-trip_2
@@ -245,7 +245,7 @@ start_date_ym %>%
 
 
 #Be Done up to this Chunk
-```{r, eval=FALSE, label = "timeOfDaySeasons", fig.cap="Number of Trips by Time of Day", message = FALSE}
+```{r, eval=FALSE, label = "timeOfDaySeasons", fig.cap="Number of Trips by Time of Day", message = FALSE, echo=FALSE}
 #Number of Trips Per Time of Day
 
 start_date_ym%>%
