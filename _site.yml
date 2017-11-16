@@ -13,3 +13,11 @@ navbar:
     href: judging_resources.html
   - text: "Cycle Sharing"
     href: CycleSharingProj.html
+  right:
+  - icon: ion-social-github
+    href: https://github.com/sampshyk/sampshyk.github.io
+    
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate

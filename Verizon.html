@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Samuel Pshyk" />
+
+<meta name="date" content="2017-10-31" />
+
+<title>Verizon</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlightingOnLoad(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Page</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="page2.html">Build Notes</a>
+</li>
+<li>
+  <a href="Photograph.html">Photos</a>
+</li>
+<li>
+  <a href="judging_resources.html">Judging Resources</a>
+</li>
+<li>
+  <a href="CycleSharingProj.html">Cycle Sharing</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/sampshyk/sampshyk.github.io">
+    <span class="ion ion-social-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Verizon</h1>
+<h4 class="author"><em>Samuel Pshyk</em></h4>
+<h4 class="date"><em>10/31/2017</em></h4>
+
+</div>
+
+
+<pre class="r"><code>Ver &lt;- read.csv(&quot;http://www1.appstate.edu/~arnholta/Data/Verizon.csv&quot;)
+Ver</code></pre>
+<pre><code>##        Time Group
+## 1     17.50  ILEC
+## 2      2.40  ILEC
+## 3      0.00  ILEC
+## 4      0.65  ILEC
+## 5     22.23  ILEC
+## 6      1.20  ILEC
+## 7      2.08  ILEC
+## 8      4.97  ILEC
+## 9      0.00  ILEC
+## 10    27.65  ILEC
+## 11    15.67  ILEC
+## 12     0.00  ILEC
+## 13     0.40  ILEC
+## 14    17.85  ILEC
+## 15    22.18  ILEC
+## 16    17.33  ILEC
+## 17     0.00  ILEC
+## 18     0.00  ILEC
+## 19    69.93  ILEC
+## 20     0.00  ILEC
+## 21     0.00  ILEC
+## 22    31.22  ILEC
+## 23    77.17  ILEC
+## 24     0.00  ILEC
+## 25     4.08  ILEC
+## 26    17.48  ILEC
+## 27    24.20  ILEC
+## 28    19.33  ILEC
+## 29     3.52  ILEC
+## 30     0.00  ILEC
+## 31    22.50  ILEC
+## 32    17.25  ILEC
+## 33     0.42  ILEC
+## 34     3.65  ILEC
+## 35     2.07  ILEC
+## 36     0.00  ILEC
+## 37     0.00  ILEC
+## 38     0.00  ILEC
+## 39     0.00  ILEC
+## 40     0.00  ILEC
+## 41   191.60  ILEC
+## 42    23.02  ILEC
+## 43    19.88  ILEC
+## 44     0.00  ILEC
+## 45     0.00  ILEC
+## 46    52.10  ILEC
+## 47    23.40  ILEC
+## 48     0.00  ILEC
+## 49    43.03  ILEC
+## 50    46.95  ILEC
+## 51     0.00  ILEC
+## 52    45.57  ILEC
+## 53    22.15  ILEC
+## 54     0.07  ILEC
+## 55     0.07  ILEC
+## 56     1.22  ILEC
+## 57    91.02  ILEC
+## 58     0.07  ILEC
+## 59    74.05  ILEC
+## 60     3.55  ILEC
+## 61     4.32  ILEC
+## 62     0.28  ILEC
+## 63     3.05  ILEC
+## 64     4.85  ILEC
+## 65     0.00  ILEC
+## 66     4.17  ILEC
+## 67    40.25  ILEC
+## 68     1.18  ILEC
+## 69    54.28  ILEC
+## 70     1.20  ILEC
+## 71     0.00  ILEC
+## 72     1.55  ILEC
+## 73     3.22  ILEC
+## 74     3.90  ILEC
+## 75     5.70  ILEC
+## 76    73.53  ILEC
+## 77    28.87  ILEC
+## 78     0.00  ILEC
+## 79     0.00  ILEC
+## 80     0.00  ILEC
+## 81     0.00  ILEC
+## 82    19.48  ILEC
+## 83    18.52  ILEC
+## 84    19.80  ILEC
+## 85    23.60  ILEC
+## 86    22.37  ILEC
+## 87    22.45  ILEC
+## 88    21.20  ILEC
+## 89     0.00  ILEC
+## 90     0.00  ILEC
+## 91    19.45  ILEC
+## 92    91.10  ILEC
+## 93    21.27  ILEC
+## 94     2.48  ILEC
+## 95     3.82  ILEC
+## 96    23.83  ILEC
+## 97    22.70  ILEC
+## 98    21.03  ILEC
+## 99    23.30  ILEC
+## 100   16.58  ILEC
+## 101    6.03  ILEC
+## 102   27.60  ILEC
+## 103   29.12  ILEC
+## 104    5.08  ILEC
+## 105    0.00  ILEC
+## 106   18.17  ILEC
+## 107    0.00  ILEC
+## 108   19.82  ILEC
+## 109    0.00  ILEC
+## 110   27.28  ILEC
+## 111   21.38  ILEC
+## 112   29.25  ILEC
+## 113   48.23  ILEC
+## 114   20.77  ILEC
+## 115   22.30  ILEC
+## 116    1.82  ILEC
+## 117    1.98  ILEC
+## 118   19.27  ILEC
+## 119   27.15  ILEC
+## 120    0.03  ILEC
+## 121   16.63  ILEC
+## 122    3.80  ILEC
+## 123    3.77  ILEC
+## 124    7.12  ILEC
+## 125    0.00  ILEC
+## 126   16.33  ILEC
+## 127   20.50  ILEC
+## 128   18.57  ILEC
+## 129   24.70  ILEC
+## 130    0.00  ILEC
+## 131   22.28  ILEC
+## 132    3.07  ILEC
+## 133    0.00  ILEC
+## 134    0.00  ILEC
+## 135    0.00  ILEC
+## 136    0.00  ILEC
+## 137    0.00  ILEC
+## 138   20.38  ILEC
+## 139    0.00  ILEC
+## 140    2.10  ILEC
+## 141    1.22  ILEC
+## 142    3.87  ILEC
+## 143    0.00  ILEC
+## 144    1.57  ILEC
+## 145    0.43  ILEC
+## 146    0.00  ILEC
+## 147   16.80  ILEC
+## 148   17.62  ILEC
+## 149    0.00  ILEC
+## 150   36.03  ILEC
+## 151    0.00  ILEC
+## 152    6.05  ILEC
+## 153    1.82  ILEC
+## 154    0.00  ILEC
+## 155    0.00  ILEC
+## 156   23.02  ILEC
+## 157    0.00  ILEC
+## 158    2.37  ILEC
+## 159   20.35  ILEC
+## 160   26.95  ILEC
+## 161    0.00  ILEC
+## 162    0.00  ILEC
+## 163    6.07  ILEC
+## 164   14.87  ILEC
+## 165    4.50  ILEC
+## 166    0.10  ILEC
+## 167    0.40  ILEC
+## 168    0.03  ILEC
+## 169    1.70  ILEC
+## 170   16.87  ILEC
+## 171    1.43  ILEC
+## 172    0.15  ILEC
+## 173    0.05  ILEC
+## 174   25.57  ILEC
+## 175    0.00  ILEC
+## 176    0.00  ILEC
+## 177    5.58  ILEC
+## 178   15.48  ILEC
+## 179    0.00  ILEC
+## 180    7.53  ILEC
+## 181    0.38  ILEC
+## 182    0.00  ILEC
+## 183    0.00  ILEC
+## 184    2.20  ILEC
+## 185    0.00  ILEC
+## 186    1.90  ILEC
+## 187    0.00  ILEC
+## 188    0.00  ILEC
+## 189   30.72  ILEC
+## 190   21.60  ILEC
+## 191    0.00  ILEC
+## 192   22.78  ILEC
+## 193    2.18  ILEC
+## 194   27.23  ILEC
+## 195    0.00  ILEC
+## 196    0.33  ILEC
+## 197   13.88  ILEC
+## 198   22.98  ILEC
+## 199    5.92  ILEC
+## 200   14.70  ILEC
+## 201    5.13  ILEC
+## 202    2.33  ILEC
+## 203    0.00  ILEC
+## 204    0.58  ILEC
+## 205   19.68  ILEC
+## 206   21.72  ILEC
+## 207    8.28  ILEC
+## 208   20.58  ILEC
+## 209   23.95  ILEC
+## 210   16.52  ILEC
+## 211    0.00  ILEC
+## 212   25.15  ILEC
+## 213   50.57  ILEC
+## 214    0.00  ILEC
+## 215    0.00  ILEC
+## 216    0.00  ILEC
+## 217   15.22  ILEC
+## 218   21.28  ILEC
+## 219    6.23  ILEC
+## 220   25.32  ILEC
+## 221   29.98  ILEC
+## 222    0.10  ILEC
+## 223   25.13  ILEC
+## 224   23.47  ILEC
+## 225    7.03  ILEC
+## 226    1.25  ILEC
+## 227   18.67  ILEC
+## 228    0.00  ILEC
+## 229    0.00  ILEC
+## 230   23.72  ILEC
+## 231   24.72  ILEC
+## 232    2.45  ILEC
+## 233    4.25  ILEC
+## 234   10.03  ILEC
+## 235   17.98  ILEC
+## 236    0.00  ILEC
+## 237   24.52  ILEC
+## 238    0.00  ILEC
+## 239   59.43  ILEC
+## 240    0.35  ILEC
+## 241   22.52  ILEC
+## 242   19.95  ILEC
+## 243    0.00  ILEC
+## 244    0.00  ILEC
+## 245    0.18  ILEC
+## 246    0.00  ILEC
+## 247    0.00  ILEC
+## 248    0.48  ILEC
+## 249    0.00  ILEC
+## 250    0.00  ILEC
+## 251    0.05  ILEC
+## 252    0.05  ILEC
+## 253    0.32  ILEC
+## 254   42.37  ILEC
+## 255    0.00  ILEC
+## 256   48.40  ILEC
+## 257    0.00  ILEC
+## 258   41.32  ILEC
+## 259   50.77  ILEC
+## 260   98.42  ILEC
+## 261   21.92  ILEC
+## 262    0.00  ILEC
+## 263    0.00  ILEC
+## 264    0.07  ILEC
+## 265   70.05  ILEC
+## 266    2.63  ILEC
+## 267    0.02  ILEC
+## 268    4.47  ILEC
+## 269    5.30  ILEC
+## 270   68.72  ILEC
+## 271    1.88  ILEC
+## 272   73.68  ILEC
+## 273    0.25  ILEC
+## 274    0.93  ILEC
+## 275    0.00  ILEC
+## 276    6.32  ILEC
+## 277   57.38  ILEC
+## 278    0.00  ILEC
+## 279    0.00  ILEC
+## 280   19.52  ILEC
+## 281   19.67  ILEC
+## 282   17.65  ILEC
+## 283   24.17  ILEC
+## 284    1.80  ILEC
+## 285   21.37  ILEC
+## 286   15.88  ILEC
+## 287   18.47  ILEC
+## 288    5.47  ILEC
+## 289   28.57  ILEC
+## 290    1.97  ILEC
+## 291    6.07  ILEC
+## 292    0.00  ILEC
+## 293    0.00  ILEC
+## 294   23.60  ILEC
+## 295   24.18  ILEC
+## 296   21.52  ILEC
+## 297   22.22  ILEC
+## 298    0.00  ILEC
+## 299   14.22  ILEC
+## 300   21.60  ILEC
+## 301   24.58  ILEC
+## 302   24.57  ILEC
+## 303   23.25  ILEC
+## 304    0.00  ILEC
+## 305    0.00  ILEC
+## 306   26.83  ILEC
+## 307   24.20  ILEC
+## 308   24.25  ILEC
+## 309    1.62  ILEC
+## 310    0.00  ILEC
+## 311  171.35  ILEC
+## 312   45.30  ILEC
+## 313   26.27  ILEC
+## 314    0.00  ILEC
+## 315   18.18  ILEC
+## 316    7.33  ILEC
+## 317   40.10  ILEC
+## 318   13.00  ILEC
+## 319    0.00  ILEC
+## 320    0.00  ILEC
+## 321    0.02  ILEC
+## 322    3.58  ILEC
+## 323   29.78  ILEC
+## 324    0.00  ILEC
+## 325   32.85  ILEC
+## 326   18.33  ILEC
+## 327   17.90  ILEC
+## 328    0.00  ILEC
+## 329   30.37  ILEC
+## 330    1.63  ILEC
+## 331    0.00  ILEC
+## 332    0.07  ILEC
+## 333   27.83  ILEC
+## 334    0.00  ILEC
+## 335   17.62  ILEC
+## 336   48.43  ILEC
+## 337   27.38  ILEC
+## 338   20.13  ILEC
+## 339   18.57  ILEC
+## 340   20.90  ILEC
+## 341   21.33  ILEC
+## 342   19.27  ILEC
+## 343    0.00  ILEC
+## 344   18.98  ILEC
+## 345   19.62  ILEC
+## 346    0.00  ILEC
+## 347    0.00  ILEC
+## 348    0.00  ILEC
+## 349    0.35  ILEC
+## 350    0.00  ILEC
+## 351   45.83  ILEC
+## 352   17.48  ILEC
+## 353    0.00  ILEC
+## 354    0.00  ILEC
+## 355   26.68  ILEC
+## 356    0.00  ILEC
+## 357    6.10  ILEC
+## 358   50.27  ILEC
+## 359    0.00  ILEC
+## 360    2.78  ILEC
+## 361    0.03  ILEC
+## 362    0.00  ILEC
+## 363   24.97  ILEC
+## 364    0.00  ILEC
+## 365    0.27  ILEC
+## 366   20.03  ILEC
+## 367    0.00  ILEC
+## 368   46.00  ILEC
+## 369    2.47  ILEC
+## 370   25.88  ILEC
+## 371    2.80  ILEC
+## 372   20.95  ILEC
+## 373    1.45  ILEC
+## 374   27.23  ILEC
+## 375   18.98  ILEC
+## 376   45.27  ILEC
+## 377    5.32  ILEC
+## 378   25.75  ILEC
+## 379    3.82  ILEC
+## 380    3.57  ILEC
+## 381    3.12  ILEC
+## 382   17.38  ILEC
+## 383   17.42  ILEC
+## 384    1.73  ILEC
+## 385   27.33  ILEC
+## 386   24.18  ILEC
+## 387   15.28  ILEC
+## 388    1.23  ILEC
+## 389   25.67  ILEC
+## 390    6.27  ILEC
+## 391    0.00  ILEC
+## 392    0.00  ILEC
+## 393    6.37  ILEC
+## 394    7.38  ILEC
+## 395   26.37  ILEC
+## 396    0.00  ILEC
+## 397    2.53  ILEC
+## 398    0.02  ILEC
+## 399    5.77  ILEC
+## 400    0.00  ILEC
+## 401    0.00  ILEC
+## 402    0.00  ILEC
+## 403   48.58  ILEC
+## 404    4.23  ILEC
+## 405    0.00  ILEC
+## 406    5.32  ILEC
+## 407    5.17  ILEC
+## 408    2.45  ILEC
+## 409    0.00  ILEC
+## 410    6.42  ILEC
+## 411   15.00  ILEC
+## 412    4.28  ILEC
+## 413   18.85  ILEC
+## 414    1.30  ILEC
+## 415    0.00  ILEC
+## 416    0.00  ILEC
+## 417   27.13  ILEC
+## 418    2.53  ILEC
+## 419   23.53  ILEC
+## 420    0.00  ILEC
+## 421    0.27  ILEC
+## 422   47.27  ILEC
+## 423   36.85  ILEC
+## 424   68.57  ILEC
+## 425    0.48  ILEC
+## 426    0.00  ILEC
+## 427    2.95  ILEC
+## 428    0.08  ILEC
+## 429    2.38  ILEC
+## 430    0.00  ILEC
+## 431    2.83  ILEC
+## 432   30.83  ILEC
+## 433    5.53  ILEC
+## 434    0.00  ILEC
+## 435    0.00  ILEC
+## 436   48.23  ILEC
+## 437    0.00  ILEC
+## 438   67.70  ILEC
+## 439    0.00  ILEC
+## 440   19.20  ILEC
+## 441    0.00  ILEC
+## 442    0.00  ILEC
+## 443    0.00  ILEC
+## 444    1.20  ILEC
+## 445    0.00  ILEC
+## 446    6.28  ILEC
+## 447    0.00  ILEC
+## 448   68.20  ILEC
+## 449    0.00  ILEC
+## 450    0.00  ILEC
+## 451   20.93  ILEC
+## 452   69.80  ILEC
+## 453    3.70  ILEC
+## 454    5.82  ILEC
+## 455    0.00  ILEC
+## 456    1.10  ILEC
+## 457    7.83  ILEC
+## 458    0.00  ILEC
+## 459  102.00  ILEC
+## 460    0.00  ILEC
+## 461    2.38  ILEC
+## 462   70.40  ILEC
+## 463    0.07  ILEC
+## 464    0.00  ILEC
+## 465    1.00  ILEC
+## 466    1.18  ILEC
+## 467   22.20  ILEC
+## 468    0.68  ILEC
+## 469    0.12  ILEC
+## 470    0.00  ILEC
+## 471   23.03  ILEC
+## 472    0.10  ILEC
+## 473    0.00  ILEC
+## 474    5.27  ILEC
+## 475    5.12  ILEC
+## 476    0.00  ILEC
+## 477    1.95  ILEC
+## 478   25.60  ILEC
+## 479   81.23  ILEC
+## 480    4.20  ILEC
+## 481   12.28  ILEC
+## 482  109.68  ILEC
+## 483    0.00  ILEC
+## 484   20.97  ILEC
+## 485    0.00  ILEC
+## 486    0.00  ILEC
+## 487    0.00  ILEC
+## 488    0.00  ILEC
+## 489    0.00  ILEC
+## 490   26.53  ILEC
+## 491    3.00  ILEC
+## 492    0.00  ILEC
+## 493   19.80  ILEC
+## 494    1.98  ILEC
+## 495   20.42  ILEC
+## 496    4.03  ILEC
+## 497   22.27  ILEC
+## 498    1.52  ILEC
+## 499    0.70  ILEC
+## 500    0.00  ILEC
+## 501    0.00  ILEC
+## 502    0.00  ILEC
+## 503  139.58  ILEC
+## 504   15.92  ILEC
+## 505    6.32  ILEC
+## 506    0.00  ILEC
+## 507   21.25  ILEC
+## 508   46.93  ILEC
+## 509   19.65  ILEC
+## 510   17.30  ILEC
+## 511    0.00  ILEC
+## 512    2.83  ILEC
+## 513    0.00  ILEC
+## 514    0.07  ILEC
+## 515   19.02  ILEC
+## 516   22.42  ILEC
+## 517    1.18  ILEC
+## 518    2.55  ILEC
+## 519    0.63  ILEC
+## 520   30.42  ILEC
+## 521    0.00  ILEC
+## 522   14.47  ILEC
+## 523    0.03  ILEC
+## 524    0.67  ILEC
+## 525    4.60  ILEC
+## 526    0.80  ILEC
+## 527    0.00  ILEC
+## 528    2.47  ILEC
+## 529   27.70  ILEC
+## 530    1.08  ILEC
+## 531    0.00  ILEC
+## 532    4.58  ILEC
+## 533    0.55  ILEC
+## 534    0.00  ILEC
+## 535    2.43  ILEC
+## 536   18.72  ILEC
+## 537    1.67  ILEC
+## 538   24.15  ILEC
+## 539   19.45  ILEC
+## 540   23.07  ILEC
+## 541   17.32  ILEC
+## 542   19.87  ILEC
+## 543   16.53  ILEC
+## 544   21.70  ILEC
+## 545   22.32  ILEC
+## 546    0.00  ILEC
+## 547    3.97  ILEC
+## 548   24.05  ILEC
+## 549   21.77  ILEC
+## 550    6.05  ILEC
+## 551    6.10  ILEC
+## 552    0.00  ILEC
+## 553   16.40  ILEC
+## 554    0.00  ILEC
+## 555   16.92  ILEC
+## 556   21.95  ILEC
+## 557    2.08  ILEC
+## 558   17.28  ILEC
+## 559    2.50  ILEC
+## 560   18.52  ILEC
+## 561   20.40  ILEC
+## 562   18.40  ILEC
+## 563    0.00  ILEC
+## 564   16.68  ILEC
+## 565    0.00  ILEC
+## 566    0.00  ILEC
+## 567   22.83  ILEC
+## 568    7.50  ILEC
+## 569    0.00  ILEC
+## 570    0.00  ILEC
+## 571   23.00  ILEC
+## 572   18.95  ILEC
+## 573   15.25  ILEC
+## 574   21.08  ILEC
+## 575    5.85  ILEC
+## 576   22.52  ILEC
+## 577    0.00  ILEC
+## 578   19.72  ILEC
+## 579   22.27  ILEC
+## 580   22.55  ILEC
+## 581    5.35  ILEC
+## 582   26.70  ILEC
+## 583    0.00  ILEC
+## 584    0.00  ILEC
+## 585   18.18  ILEC
+## 586   18.28  ILEC
+## 587    0.00  ILEC
+## 588    0.53  ILEC
+## 589    0.00  ILEC
+## 590    5.57  ILEC
+## 591    2.20  ILEC
+## 592    2.63  ILEC
+## 593   14.58  ILEC
+## 594    0.47  ILEC
+## 595    0.00  ILEC
+## 596   25.50  ILEC
+## 597   19.27  ILEC
+## 598    5.07  ILEC
+## 599    4.57  ILEC
+## 600    0.00  ILEC
+## 601    0.00  ILEC
+## 602   29.70  ILEC
+## 603   19.10  ILEC
+## 604    0.00  ILEC
+## 605    5.35  ILEC
+## 606   12.67  ILEC
+## 607    0.00  ILEC
+## 608   19.50  ILEC
+## 609    1.05  ILEC
+## 610    6.08  ILEC
+## 611   21.87  ILEC
+## 612   22.10  ILEC
+## 613   24.97  ILEC
+## 614    0.00  ILEC
+## 615    0.00  ILEC
+## 616   23.53  ILEC
+## 617    2.53  ILEC
+## 618    0.53  ILEC
+## 619   16.08  ILEC
+## 620    1.10  ILEC
+## 621   18.38  ILEC
+## 622    0.00  ILEC
+## 623   22.75  ILEC
+## 624    6.48  ILEC
+## 625   23.60  ILEC
+## 626    4.42  ILEC
+## 627    0.00  ILEC
+## 628    5.52  ILEC
+## 629   30.90  ILEC
+## 630   14.98  ILEC
+## 631    3.75  ILEC
+## 632   24.13  ILEC
+## 633    3.28  ILEC
+## 634    0.00  ILEC
+## 635    5.12  ILEC
+## 636    2.57  ILEC
+## 637   12.00  ILEC
+## 638    2.13  ILEC
+## 639    1.38  ILEC
+## 640    9.75  ILEC
+## 641    0.00  ILEC
+## 642    0.00  ILEC
+## 643   22.22  ILEC
+## 644   24.33  ILEC
+## 645   24.63  ILEC
+## 646   25.35  ILEC
+## 647   20.00  ILEC
+## 648   14.33  ILEC
+## 649   14.25  ILEC
+## 650   14.25  ILEC
+## 651   14.22  ILEC
+## 652   14.20  ILEC
+## 653   14.20  ILEC
+## 654   14.18  ILEC
+## 655   14.17  ILEC
+## 656   14.02  ILEC
+## 657   13.80  ILEC
+## 658   13.68  ILEC
+## 659   13.65  ILEC
+## 660   13.60  ILEC
+## 661   12.95  ILEC
+## 662   12.90  ILEC
+## 663   12.87  ILEC
+## 664   12.28  ILEC
+## 665   11.95  ILEC
+## 666   11.75  ILEC
+## 667   11.27  ILEC
+## 668    9.33  ILEC
+## 669    9.25  ILEC
+## 670    8.87  ILEC
+## 671    8.43  ILEC
+## 672    8.17  ILEC
+## 673    7.67  ILEC
+## 674    7.63  ILEC
+## 675    7.63  ILEC
+## 676    7.55  ILEC
+## 677    7.50  ILEC
+## 678    7.48  ILEC
+## 679    7.37  ILEC
+## 680    7.30  ILEC
+## 681    7.25  ILEC
+## 682    7.18  ILEC
+## 683    7.17  ILEC
+## 684    7.08  ILEC
+## 685    7.08  ILEC
+## 686    6.95  ILEC
+## 687    6.93  ILEC
+## 688    6.90  ILEC
+## 689    6.90  ILEC
+## 690    6.88  ILEC
+## 691    6.85  ILEC
+## 692    6.85  ILEC
+## 693    6.83  ILEC
+## 694    6.83  ILEC
+## 695    6.70  ILEC
+## 696    6.68  ILEC
+## 697    6.63  ILEC
+## 698    6.63  ILEC
+## 699    6.63  ILEC
+## 700    6.55  ILEC
+## 701    6.52  ILEC
+## 702    6.52  ILEC
+## 703    6.50  ILEC
+## 704    6.47  ILEC
+## 705    6.47  ILEC
+## 706    6.40  ILEC
+## 707    6.35  ILEC
+## 708    6.33  ILEC
+## 709    6.27  ILEC
+## 710    6.27  ILEC
+## 711    6.27  ILEC
+## 712    6.23  ILEC
+## 713    6.22  ILEC
+## 714    6.15  ILEC
+## 715    6.15  ILEC
+## 716    6.12  ILEC
+## 717    6.10  ILEC
+## 718    6.08  ILEC
+## 719    6.07  ILEC
+## 720    6.07  ILEC
+## 721    6.03  ILEC
+## 722    6.02  ILEC
+## 723    6.00  ILEC
+## 724    6.00  ILEC
+## 725    5.98  ILEC
+## 726    5.97  ILEC
+## 727    5.95  ILEC
+## 728    5.92  ILEC
+## 729    5.92  ILEC
+## 730    5.88  ILEC
+## 731    5.87  ILEC
+## 732    5.83  ILEC
+## 733    5.78  ILEC
+## 734    5.78  ILEC
+## 735    5.73  ILEC
+## 736    5.73  ILEC
+## 737    5.73  ILEC
+## 738    5.72  ILEC
+## 739    5.72  ILEC
+## 740    5.70  ILEC
+## 741    5.68  ILEC
+## 742    5.67  ILEC
+## 743    5.67  ILEC
+## 744    5.65  ILEC
+## 745    5.65  ILEC
+## 746    5.65  ILEC
+## 747    5.63  ILEC
+## 748    5.62  ILEC
+## 749    5.60  ILEC
+## 750    5.60  ILEC
+## 751    5.58  ILEC
+## 752    5.57  ILEC
+## 753    5.55  ILEC
+## 754    5.53  ILEC
+## 755    5.53  ILEC
+## 756    5.52  ILEC
+## 757    5.50  ILEC
+## 758    5.50  ILEC
+## 759    5.43  ILEC
+## 760    5.43  ILEC
+## 761    5.43  ILEC
+## 762    5.42  ILEC
+## 763    5.37  ILEC
+## 764    5.37  ILEC
+## 765    5.33  ILEC
+## 766    5.32  ILEC
+## 767    5.30  ILEC
+## 768    5.23  ILEC
+## 769    5.23  ILEC
+## 770    5.20  ILEC
+## 771    5.20  ILEC
+## 772    5.18  ILEC
+## 773    5.18  ILEC
+## 774    5.17  ILEC
+## 775    5.15  ILEC
+## 776    5.12  ILEC
+## 777    5.07  ILEC
+## 778    5.05  ILEC
+## 779    5.05  ILEC
+## 780    5.05  ILEC
+## 781    5.03  ILEC
+## 782    5.00  ILEC
+## 783    5.00  ILEC
+## 784    4.98  ILEC
+## 785    4.97  ILEC
+## 786    4.97  ILEC
+## 787    4.95  ILEC
+## 788    4.93  ILEC
+## 789    4.93  ILEC
+## 790    4.93  ILEC
+## 791    4.92  ILEC
+## 792    4.92  ILEC
+## 793    4.92  ILEC
+## 794    4.90  ILEC
+## 795    4.88  ILEC
+## 796    4.87  ILEC
+## 797    4.85  ILEC
+## 798    4.82  ILEC
+## 799    4.80  ILEC
+## 800    4.80  ILEC
+## 801    4.77  ILEC
+## 802    4.77  ILEC
+## 803    4.75  ILEC
+## 804    4.72  ILEC
+## 805    4.70  ILEC
+## 806    4.70  ILEC
+## 807    4.70  ILEC
+## 808    4.67  ILEC
+## 809    4.65  ILEC
+## 810    4.63  ILEC
+## 811    4.62  ILEC
+## 812    4.60  ILEC
+## 813    4.60  ILEC
+## 814    4.60  ILEC
+## 815    4.60  ILEC
+## 816    4.58  ILEC
+## 817    4.58  ILEC
+## 818    4.58  ILEC
+## 819    4.58  ILEC
+## 820    4.57  ILEC
+## 821    4.57  ILEC
+## 822    4.55  ILEC
+## 823    4.53  ILEC
+## 824    4.50  ILEC
+## 825    4.47  ILEC
+## 826    4.47  ILEC
+## 827    4.47  ILEC
+## 828    4.45  ILEC
+## 829    4.45  ILEC
+## 830    4.43  ILEC
+## 831    4.43  ILEC
+## 832    4.43  ILEC
+## 833    4.43  ILEC
+## 834    4.43  ILEC
+## 835    4.42  ILEC
+## 836    4.42  ILEC
+## 837    4.40  ILEC
+## 838    4.38  ILEC
+## 839    4.38  ILEC
+## 840    4.38  ILEC
+## 841    4.38  ILEC
+## 842    4.37  ILEC
+## 843    4.37  ILEC
+## 844    4.35  ILEC
+## 845    4.33  ILEC
+## 846    4.33  ILEC
+## 847    4.33  ILEC
+## 848    4.33  ILEC
+## 849    4.32  ILEC
+## 850    4.32  ILEC
+## 851    4.32  ILEC
+## 852    4.28  ILEC
+## 853    4.28  ILEC
+## 854    4.28  ILEC
+## 855    4.28  ILEC
+## 856    4.27  ILEC
+## 857    4.27  ILEC
+## 858    4.23  ILEC
+## 859    4.22  ILEC
+## 860    4.22  ILEC
+## 861    4.20  ILEC
+## 862    4.20  ILEC
+## 863    4.20  ILEC
+## 864    4.18  ILEC
+## 865    4.18  ILEC
+## 866    4.18  ILEC
+## 867    4.17  ILEC
+## 868    4.17  ILEC
+## 869    4.17  ILEC
+## 870    4.15  ILEC
+## 871    4.13  ILEC
+## 872    4.13  ILEC
+## 873    4.13  ILEC
+## 874    4.12  ILEC
+## 875    4.12  ILEC
+## 876    4.12  ILEC
+## 877    4.12  ILEC
+## 878    4.12  ILEC
+## 879    4.10  ILEC
+## 880    4.10  ILEC
+## 881    4.10  ILEC
+## 882    4.08  ILEC
+## 883    4.08  ILEC
+## 884    4.08  ILEC
+## 885    4.07  ILEC
+## 886    4.07  ILEC
+## 887    4.05  ILEC
+## 888    4.03  ILEC
+## 889    4.03  ILEC
+## 890    3.98  ILEC
+## 891    3.98  ILEC
+## 892    3.98  ILEC
+## 893    3.95  ILEC
+## 894    3.95  ILEC
+## 895    3.95  ILEC
+## 896    3.95  ILEC
+## 897    3.95  ILEC
+## 898    3.93  ILEC
+## 899    3.93  ILEC
+## 900    3.93  ILEC
+## 901    3.93  ILEC
+## 902    3.92  ILEC
+## 903    3.92  ILEC
+## 904    3.92  ILEC
+## 905    3.87  ILEC
+## 906    3.87  ILEC
+## 907    3.87  ILEC
+## 908    3.87  ILEC
+## 909    3.85  ILEC
+## 910    3.85  ILEC
+## 911    3.85  ILEC
+## 912    3.83  ILEC
+## 913    3.80  ILEC
+## 914    3.78  ILEC
+## 915    3.78  ILEC
+## 916    3.78  ILEC
+## 917    3.78  ILEC
+## 918    3.78  ILEC
+## 919    3.77  ILEC
+## 920    3.73  ILEC
+## 921    3.73  ILEC
+## 922    3.72  ILEC
+## 923    3.72  ILEC
+## 924    3.72  ILEC
+## 925    3.70  ILEC
+## 926    3.68  ILEC
+## 927    3.68  ILEC
+## 928    3.67  ILEC
+## 929    3.65  ILEC
+## 930    3.65  ILEC
+## 931    3.65  ILEC
+## 932    3.65  ILEC
+## 933    3.65  ILEC
+## 934    3.63  ILEC
+## 935    3.62  ILEC
+## 936    3.62  ILEC
+## 937    3.60  ILEC
+## 938    3.60  ILEC
+## 939    3.60  ILEC
+## 940    3.58  ILEC
+## 941    3.53  ILEC
+## 942    3.53  ILEC
+## 943    3.52  ILEC
+## 944    3.50  ILEC
+## 945    3.50  ILEC
+## 946    3.50  ILEC
+## 947    3.50  ILEC
+## 948    3.48  ILEC
+## 949    3.48  ILEC
+## 950    3.47  ILEC
+## 951    3.43  ILEC
+## 952    3.43  ILEC
+## 953    3.42  ILEC
+## 954    3.42  ILEC
+## 955    3.40  ILEC
+## 956    3.40  ILEC
+## 957    3.35  ILEC
+## 958    3.35  ILEC
+## 959    3.35  ILEC
+## 960    3.33  ILEC
+## 961    3.33  ILEC
+## 962    3.33  ILEC
+## 963    3.32  ILEC
+## 964    3.32  ILEC
+## 965    3.30  ILEC
+## 966    3.27  ILEC
+## 967    3.25  ILEC
+## 968    3.23  ILEC
+## 969    3.22  ILEC
+## 970    3.22  ILEC
+## 971    3.22  ILEC
+## 972    3.22  ILEC
+## 973    3.18  ILEC
+## 974    3.18  ILEC
+## 975    3.17  ILEC
+## 976    3.17  ILEC
+## 977    3.15  ILEC
+## 978    3.13  ILEC
+## 979    3.13  ILEC
+## 980    3.12  ILEC
+## 981    3.12  ILEC
+## 982    3.12  ILEC
+## 983    3.12  ILEC
+## 984    3.12  ILEC
+## 985    3.10  ILEC
+## 986    3.10  ILEC
+## 987    3.08  ILEC
+## 988    3.08  ILEC
+## 989    3.07  ILEC
+## 990    3.07  ILEC
+## 991    3.05  ILEC
+## 992    3.02  ILEC
+## 993    3.02  ILEC
+## 994    3.02  ILEC
+## 995    3.00  ILEC
+## 996    2.98  ILEC
+## 997    2.98  ILEC
+## 998    2.95  ILEC
+## 999    2.95  ILEC
+## 1000   2.95  ILEC
+## 1001   2.95  ILEC
+## 1002   2.95  ILEC
+## 1003   2.93  ILEC
+## 1004   2.90  ILEC
+## 1005   2.90  ILEC
+## 1006   2.88  ILEC
+## 1007   2.88  ILEC
+## 1008   2.87  ILEC
+## 1009   2.65  ILEC
+## 1010   2.62  ILEC
+## 1011   2.62  ILEC
+## 1012   2.62  ILEC
+## 1013   2.62  ILEC
+## 1014   2.60  ILEC
+## 1015   0.00  ILEC
+## 1016   7.45  ILEC
+## 1017   6.80  ILEC
+## 1018   6.53  ILEC
+## 1019   6.40  ILEC
+## 1020   6.37  ILEC
+## 1021   6.37  ILEC
+## 1022   6.28  ILEC
+## 1023   5.97  ILEC
+## 1024   5.82  ILEC
+## 1025   5.78  ILEC
+## 1026   5.72  ILEC
+## 1027   5.48  ILEC
+## 1028   5.38  ILEC
+## 1029   5.17  ILEC
+## 1030   5.00  ILEC
+## 1031   4.55  ILEC
+## 1032   2.58  ILEC
+## 1033   2.57  ILEC
+## 1034   2.55  ILEC
+## 1035   2.55  ILEC
+## 1036   2.53  ILEC
+## 1037   2.52  ILEC
+## 1038   2.50  ILEC
+## 1039   2.48  ILEC
+## 1040   2.48  ILEC
+## 1041   2.48  ILEC
+## 1042   2.47  ILEC
+## 1043   2.47  ILEC
+## 1044   2.45  ILEC
+## 1045   2.43  ILEC
+## 1046   2.40  ILEC
+## 1047   2.40  ILEC
+## 1048   2.40  ILEC
+## 1049   2.40  ILEC
+## 1050   2.40  ILEC
+## 1051   2.40  ILEC
+## 1052   2.38  ILEC
+## 1053   2.37  ILEC
+## 1054   2.37  ILEC
+## 1055   2.37  ILEC
+## 1056   2.37  ILEC
+## 1057   2.35  ILEC
+## 1058   2.35  ILEC
+## 1059   2.33  ILEC
+## 1060   2.33  ILEC
+## 1061   2.32  ILEC
+## 1062   2.32  ILEC
+## 1063   2.32  ILEC
+## 1064   2.30  ILEC
+## 1065   2.28  ILEC
+## 1066   2.28  ILEC
+## 1067   2.28  ILEC
+## 1068   2.27  ILEC
+## 1069   2.25  ILEC
+## 1070   2.25  ILEC
+## 1071   2.25  ILEC
+## 1072   2.25  ILEC
+## 1073   2.25  ILEC
+## 1074   2.22  ILEC
+## 1075   2.22  ILEC
+## 1076   2.22  ILEC
+## 1077   2.20  ILEC
+## 1078   2.20  ILEC
+## 1079   2.20  ILEC
+## 1080   2.18  ILEC
+## 1081   2.17  ILEC
+## 1082   2.17  ILEC
+## 1083   2.15  ILEC
+## 1084   2.15  ILEC
+## 1085   2.13  ILEC
+## 1086   2.13  ILEC
+## 1087   2.12  ILEC
+## 1088   2.08  ILEC
+## 1089   2.08  ILEC
+## 1090   2.02  ILEC
+## 1091   2.02  ILEC
+## 1092   2.02  ILEC
+## 1093   2.00  ILEC
+## 1094   2.00  ILEC
+## 1095   2.00  ILEC
+## 1096   1.98  ILEC
+## 1097   1.98  ILEC
+## 1098   1.98  ILEC
+## 1099   1.98  ILEC
+## 1100   1.98  ILEC
+## 1101   1.98  ILEC
+## 1102   1.98  ILEC
+## 1103   1.97  ILEC
+## 1104   1.97  ILEC
+## 1105   1.95  ILEC
+## 1106   1.93  ILEC
+## 1107   1.93  ILEC
+## 1108   1.93  ILEC
+## 1109   1.93  ILEC
+## 1110   1.92  ILEC
+## 1111   1.90  ILEC
+## 1112   1.90  ILEC
+## 1113   1.77  ILEC
+## 1114   1.75  ILEC
+## 1115   1.75  ILEC
+## 1116   1.75  ILEC
+## 1117   1.75  ILEC
+## 1118   1.73  ILEC
+## 1119   1.73  ILEC
+## 1120   1.72  ILEC
+## 1121   1.70  ILEC
+## 1122   1.70  ILEC
+## 1123   1.70  ILEC
+## 1124   1.68  ILEC
+## 1125   1.65  ILEC
+## 1126   1.65  ILEC
+## 1127   1.65  ILEC
+## 1128   1.63  ILEC
+## 1129   1.62  ILEC
+## 1130   1.62  ILEC
+## 1131   1.62  ILEC
+## 1132   1.62  ILEC
+## 1133   1.60  ILEC
+## 1134   1.60  ILEC
+## 1135   1.60  ILEC
+## 1136   1.60  ILEC
+## 1137   1.60  ILEC
+## 1138   1.58  ILEC
+## 1139   1.58  ILEC
+## 1140   1.57  ILEC
+## 1141   1.57  ILEC
+## 1142   1.57  ILEC
+## 1143   1.57  ILEC
+## 1144   1.55  ILEC
+## 1145   1.55  ILEC
+## 1146   1.55  ILEC
+## 1147   1.55  ILEC
+## 1148   1.53  ILEC
+## 1149   1.53  ILEC
+## 1150   1.53  ILEC
+## 1151   1.52  ILEC
+## 1152   1.52  ILEC
+## 1153   1.50  ILEC
+## 1154   1.50  ILEC
+## 1155   1.50  ILEC
+## 1156   1.48  ILEC
+## 1157   1.48  ILEC
+## 1158   1.47  ILEC
+## 1159   1.45  ILEC
+## 1160   1.45  ILEC
+## 1161   1.43  ILEC
+## 1162   1.43  ILEC
+## 1163   1.43  ILEC
+## 1164   1.42  ILEC
+## 1165   1.40  ILEC
+## 1166   1.40  ILEC
+## 1167   1.38  ILEC
+## 1168   1.38  ILEC
+## 1169   1.37  ILEC
+## 1170   1.37  ILEC
+## 1171   1.37  ILEC
+## 1172   1.37  ILEC
+## 1173   1.35  ILEC
+## 1174   1.32  ILEC
+## 1175   1.32  ILEC
+## 1176   1.30  ILEC
+## 1177   1.28  ILEC
+## 1178   1.28  ILEC
+## 1179   1.28  ILEC
+## 1180   1.28  ILEC
+## 1181   1.25  ILEC
+## 1182   1.25  ILEC
+## 1183   1.25  ILEC
+## 1184   1.22  ILEC
+## 1185   1.22  ILEC
+## 1186   1.20  ILEC
+## 1187   1.20  ILEC
+## 1188   1.20  ILEC
+## 1189   1.18  ILEC
+## 1190   1.18  ILEC
+## 1191   1.18  ILEC
+## 1192   1.18  ILEC
+## 1193   1.17  ILEC
+## 1194   1.13  ILEC
+## 1195   1.12  ILEC
+## 1196   1.12  ILEC
+## 1197   1.12  ILEC
+## 1198   1.10  ILEC
+## 1199   1.10  ILEC
+## 1200   1.08  ILEC
+## 1201   1.08  ILEC
+## 1202   1.08  ILEC
+## 1203   1.08  ILEC
+## 1204   1.08  ILEC
+## 1205   1.07  ILEC
+## 1206   1.05  ILEC
+## 1207   1.05  ILEC
+## 1208   1.05  ILEC
+## 1209   1.03  ILEC
+## 1210   1.03  ILEC
+## 1211   1.03  ILEC
+## 1212   1.02  ILEC
+## 1213   1.02  ILEC
+## 1214   1.00  ILEC
+## 1215   0.98  ILEC
+## 1216   0.97  ILEC
+## 1217   0.95  ILEC
+## 1218   0.95  ILEC
+## 1219   0.95  ILEC
+## 1220   0.93  ILEC
+## 1221   0.92  ILEC
+## 1222   0.92  ILEC
+## 1223   0.90  ILEC
+## 1224   5.63  ILEC
+## 1225   4.95  ILEC
+## 1226   4.82  ILEC
+## 1227   4.80  ILEC
+## 1228   4.33  ILEC
+## 1229   4.22  ILEC
+## 1230   3.75  ILEC
+## 1231   3.13  ILEC
+## 1232   2.88  ILEC
+## 1233   2.72  ILEC
+## 1234   2.72  ILEC
+## 1235   2.57  ILEC
+## 1236   2.25  ILEC
+## 1237   1.50  ILEC
+## 1238   0.90  ILEC
+## 1239   4.17  ILEC
+## 1240   3.00  ILEC
+## 1241   2.70  ILEC
+## 1242   1.82  ILEC
+## 1243   0.90  ILEC
+## 1244   0.88  ILEC
+## 1245   0.88  ILEC
+## 1246   0.88  ILEC
+## 1247   0.87  ILEC
+## 1248   0.87  ILEC
+## 1249   0.87  ILEC
+## 1250   0.85  ILEC
+## 1251   0.85  ILEC
+## 1252   0.85  ILEC
+## 1253   0.83  ILEC
+## 1254   0.83  ILEC
+## 1255   0.80  ILEC
+## 1256   0.80  ILEC
+## 1257   0.80  ILEC
+## 1258   0.78  ILEC
+## 1259   0.78  ILEC
+## 1260   0.78  ILEC
+## 1261   0.77  ILEC
+## 1262   0.77  ILEC
+## 1263   0.75  ILEC
+## 1264   0.75  ILEC
+## 1265   0.75  ILEC
+## 1266   0.73  ILEC
+## 1267   0.73  ILEC
+## 1268   0.73  ILEC
+## 1269   0.73  ILEC
+## 1270   0.72  ILEC
+## 1271   0.72  ILEC
+## 1272   0.72  ILEC
+## 1273   0.70  ILEC
+## 1274   0.68  ILEC
+## 1275   0.68  ILEC
+## 1276   0.68  ILEC
+## 1277   0.68  ILEC
+## 1278   0.67  ILEC
+## 1279   0.67  ILEC
+## 1280   0.67  ILEC
+## 1281   0.67  ILEC
+## 1282   0.65  ILEC
+## 1283   0.65  ILEC
+## 1284   0.65  ILEC
+## 1285   0.62  ILEC
+## 1286   0.62  ILEC
+## 1287   0.62  ILEC
+## 1288   0.62  ILEC
+## 1289   0.60  ILEC
+## 1290   0.60  ILEC
+## 1291   0.58  ILEC
+## 1292   0.58  ILEC
+## 1293   0.55  ILEC
+## 1294   0.53  ILEC
+## 1295   0.53  ILEC
+## 1296   0.52  ILEC
+## 1297   0.50  ILEC
+## 1298   0.50  ILEC
+## 1299   0.48  ILEC
+## 1300   0.47  ILEC
+## 1301   0.47  ILEC
+## 1302   0.47  ILEC
+## 1303   0.45  ILEC
+## 1304   0.45  ILEC
+## 1305   0.45  ILEC
+## 1306   0.43  ILEC
+## 1307   0.43  ILEC
+## 1308   0.42  ILEC
+## 1309   0.38  ILEC
+## 1310   0.37  ILEC
+## 1311   0.35  ILEC
+## 1312   0.35  ILEC
+## 1313   0.33  ILEC
+## 1314   0.30  ILEC
+## 1315   0.25  ILEC
+## 1316   0.25  ILEC
+## 1317   0.25  ILEC
+## 1318   0.25  ILEC
+## 1319   0.25  ILEC
+## 1320   0.23  ILEC
+## 1321   0.22  ILEC
+## 1322   0.22  ILEC
+## 1323  21.25  ILEC
+## 1324   9.48  ILEC
+## 1325   7.47  ILEC
+## 1326   6.90  ILEC
+## 1327   6.45  ILEC
+## 1328   6.18  ILEC
+## 1329   5.73  ILEC
+## 1330   5.73  ILEC
+## 1331   5.73  ILEC
+## 1332   5.72  ILEC
+## 1333   5.70  ILEC
+## 1334   5.70  ILEC
+## 1335   5.70  ILEC
+## 1336   5.68  ILEC
+## 1337   5.05  ILEC
+## 1338   5.02  ILEC
+## 1339   5.02  ILEC
+## 1340   5.02  ILEC
+## 1341   0.20  ILEC
+## 1342   0.20  ILEC
+## 1343   0.18  ILEC
+## 1344   0.17  ILEC
+## 1345   0.15  ILEC
+## 1346   0.15  ILEC
+## 1347   0.15  ILEC
+## 1348   0.12  ILEC
+## 1349   0.12  ILEC
+## 1350   0.10  ILEC
+## 1351   0.08  ILEC
+## 1352   0.08  ILEC
+## 1353   0.07  ILEC
+## 1354   0.05  ILEC
+## 1355   0.03  ILEC
+## 1356   8.00  ILEC
+## 1357   7.33  ILEC
+## 1358   5.08  ILEC
+## 1359   5.00  ILEC
+## 1360   4.98  ILEC
+## 1361   4.97  ILEC
+## 1362   4.97  ILEC
+## 1363   4.97  ILEC
+## 1364   4.97  ILEC
+## 1365   4.95  ILEC
+## 1366   4.93  ILEC
+## 1367   4.92  ILEC
+## 1368   4.92  ILEC
+## 1369   4.90  ILEC
+## 1370   4.88  ILEC
+## 1371   4.88  ILEC
+## 1372   4.88  ILEC
+## 1373   4.85  ILEC
+## 1374   4.85  ILEC
+## 1375   4.18  ILEC
+## 1376   4.05  ILEC
+## 1377   4.03  ILEC
+## 1378   4.02  ILEC
+## 1379   4.00  ILEC
+## 1380   3.98  ILEC
+## 1381   3.97  ILEC
+## 1382   3.95  ILEC
+## 1383   3.95  ILEC
+## 1384   3.93  ILEC
+## 1385   3.93  ILEC
+## 1386   3.92  ILEC
+## 1387   3.88  ILEC
+## 1388   3.85  ILEC
+## 1389   3.85  ILEC
+## 1390   3.77  ILEC
+## 1391   3.70  ILEC
+## 1392   2.58  ILEC
+## 1393   2.58  ILEC
+## 1394   7.08  ILEC
+## 1395   0.65  ILEC
+## 1396   0.65  ILEC
+## 1397   0.63  ILEC
+## 1398   2.58  ILEC
+## 1399   2.53  ILEC
+## 1400   1.33  ILEC
+## 1401   2.40  ILEC
+## 1402   2.37  ILEC
+## 1403   2.35  ILEC
+## 1404   0.07  ILEC
+## 1405   0.07  ILEC
+## 1406   0.05  ILEC
+## 1407   0.08  ILEC
+## 1408   0.05  ILEC
+## 1409   0.03  ILEC
+## 1410   0.08  ILEC
+## 1411   0.07  ILEC
+## 1412   0.03  ILEC
+## 1413   0.07  ILEC
+## 1414   0.03  ILEC
+## 1415   0.03  ILEC
+## 1416   0.03  ILEC
+## 1417   0.05  ILEC
+## 1418   0.05  ILEC
+## 1419   6.77  ILEC
+## 1420  26.50  ILEC
+## 1421  15.18  ILEC
+## 1422   0.00  ILEC
+## 1423   0.00  ILEC
+## 1424  41.08  ILEC
+## 1425  18.02  ILEC
+## 1426   0.07  ILEC
+## 1427   8.17  ILEC
+## 1428   4.67  ILEC
+## 1429   7.82  ILEC
+## 1430  14.92  ILEC
+## 1431  44.15  ILEC
+## 1432   0.00  ILEC
+## 1433   0.07  ILEC
+## 1434   0.07  ILEC
+## 1435   9.17  ILEC
+## 1436   5.82  ILEC
+## 1437   0.00  ILEC
+## 1438   2.73  ILEC
+## 1439   0.05  ILEC
+## 1440   0.05  ILEC
+## 1441   0.53  ILEC
+## 1442   0.13  ILEC
+## 1443  46.70  ILEC
+## 1444  25.18  ILEC
+## 1445   1.03  ILEC
+## 1446   5.98  ILEC
+## 1447   1.22  ILEC
+## 1448   0.05  ILEC
+## 1449   0.05  ILEC
+## 1450   8.05  ILEC
+## 1451   7.52  ILEC
+## 1452   0.07  ILEC
+## 1453   0.07  ILEC
+## 1454   0.07  ILEC
+## 1455   3.02  ILEC
+## 1456   0.08  ILEC
+## 1457   0.08  ILEC
+## 1458   0.03  ILEC
+## 1459  65.10  ILEC
+## 1460   0.00  ILEC
+## 1461   0.00  ILEC
+## 1462  48.30  ILEC
+## 1463  44.43  ILEC
+## 1464   0.07  ILEC
+## 1465   0.00  ILEC
+## 1466   0.00  ILEC
+## 1467   4.02  ILEC
+## 1468   0.03  ILEC
+## 1469   0.05  ILEC
+## 1470   0.07  ILEC
+## 1471   0.00  ILEC
+## 1472  52.37  ILEC
+## 1473  28.85  ILEC
+## 1474   3.53  ILEC
+## 1475   0.10  ILEC
+## 1476   0.00  ILEC
+## 1477   6.40  ILEC
+## 1478   0.02  ILEC
+## 1479   0.00  ILEC
+## 1480   0.00  ILEC
+## 1481   0.95  ILEC
+## 1482   0.00  ILEC
+## 1483  67.62  ILEC
+## 1484  76.17  ILEC
+## 1485   0.07  ILEC
+## 1486   0.18  ILEC
+## 1487  24.37  ILEC
+## 1488   0.00  ILEC
+## 1489   0.87  ILEC
+## 1490   0.00  ILEC
+## 1491   0.00  ILEC
+## 1492   0.00  ILEC
+## 1493  22.73  ILEC
+## 1494  16.85  ILEC
+## 1495  21.57  ILEC
+## 1496   0.07  ILEC
+## 1497   0.00  ILEC
+## 1498  21.92  ILEC
+## 1499  19.32  ILEC
+## 1500   0.33  ILEC
+## 1501  25.63  ILEC
+## 1502   3.22  ILEC
+## 1503  16.73  ILEC
+## 1504   0.00  ILEC
+## 1505  24.10  ILEC
+## 1506  43.95  ILEC
+## 1507  16.18  ILEC
+## 1508   0.00  ILEC
+## 1509  19.45  ILEC
+## 1510  19.77  ILEC
+## 1511  18.92  ILEC
+## 1512   0.07  ILEC
+## 1513   3.33  ILEC
+## 1514  17.15  ILEC
+## 1515   4.50  ILEC
+## 1516  29.15  ILEC
+## 1517   0.05  ILEC
+## 1518   3.02  ILEC
+## 1519  42.60  ILEC
+## 1520  26.03  ILEC
+## 1521   0.67  ILEC
+## 1522  20.03  ILEC
+## 1523   0.00  ILEC
+## 1524  70.60  ILEC
+## 1525  21.03  ILEC
+## 1526   4.58  ILEC
+## 1527   3.07  ILEC
+## 1528  26.47  ILEC
+## 1529  26.50  ILEC
+## 1530  53.70  ILEC
+## 1531  22.25  ILEC
+## 1532  24.33  ILEC
+## 1533   5.15  ILEC
+## 1534   4.27  ILEC
+## 1535   0.17  ILEC
+## 1536  25.98  ILEC
+## 1537   0.00  ILEC
+## 1538  26.38  ILEC
+## 1539   3.12  ILEC
+## 1540  19.40  ILEC
+## 1541   0.00  ILEC
+## 1542   0.00  ILEC
+## 1543   1.82  ILEC
+## 1544   2.67  ILEC
+## 1545   1.65  ILEC
+## 1546   0.02  ILEC
+## 1547   0.00  ILEC
+## 1548   0.00  ILEC
+## 1549  19.77  ILEC
+## 1550   0.00  ILEC
+## 1551  25.63  ILEC
+## 1552   5.20  ILEC
+## 1553   2.88  ILEC
+## 1554   2.03  ILEC
+## 1555   0.50  ILEC
+## 1556  22.28  ILEC
+## 1557   0.00  ILEC
+## 1558   0.03  ILEC
+## 1559  22.62  ILEC
+## 1560  21.10  ILEC
+## 1561  17.80  ILEC
+## 1562   1.45  ILEC
+## 1563   4.30  ILEC
+## 1564   0.27  ILEC
+## 1565   3.85  ILEC
+## 1566  28.22  ILEC
+## 1567   0.00  ILEC
+## 1568  15.67  ILEC
+## 1569  16.63  ILEC
+## 1570  24.03  ILEC
+## 1571   0.00  ILEC
+## 1572   3.70  ILEC
+## 1573  27.05  ILEC
+## 1574  22.57  ILEC
+## 1575   1.07  ILEC
+## 1576   1.40  ILEC
+## 1577  51.68  ILEC
+## 1578  28.17  ILEC
+## 1579  19.77  ILEC
+## 1580  26.90  ILEC
+## 1581  16.53  ILEC
+## 1582  15.25  ILEC
+## 1583   0.00  ILEC
+## 1584   0.00  ILEC
+## 1585   0.12  ILEC
+## 1586   0.02  ILEC
+## 1587  22.08  ILEC
+## 1588   1.05  ILEC
+## 1589   0.00  ILEC
+## 1590   0.00  ILEC
+## 1591   0.40  ILEC
+## 1592   0.25  ILEC
+## 1593  16.88  ILEC
+## 1594   6.38  ILEC
+## 1595   0.00  ILEC
+## 1596  16.38  ILEC
+## 1597   0.43  ILEC
+## 1598   0.00  ILEC
+## 1599   0.00  ILEC
+## 1600   0.17  ILEC
+## 1601   1.85  ILEC
+## 1602   0.00  ILEC
+## 1603  25.17  ILEC
+## 1604   3.28  ILEC
+## 1605  21.88  ILEC
+## 1606  20.47  ILEC
+## 1607   0.02  ILEC
+## 1608  22.15  ILEC
+## 1609   0.00  ILEC
+## 1610   2.82  ILEC
+## 1611  74.60  ILEC
+## 1612   4.38  ILEC
+## 1613   0.00  ILEC
+## 1614   3.38  ILEC
+## 1615   0.00  ILEC
+## 1616   0.00  ILEC
+## 1617   0.00  ILEC
+## 1618   4.03  ILEC
+## 1619   6.42  ILEC
+## 1620   0.12  ILEC
+## 1621   3.95  ILEC
+## 1622  15.98  ILEC
+## 1623   5.35  ILEC
+## 1624  74.92  ILEC
+## 1625  19.43  ILEC
+## 1626   0.00  ILEC
+## 1627   0.00  ILEC
+## 1628   4.40  ILEC
+## 1629   0.00  ILEC
+## 1630   0.00  ILEC
+## 1631   0.00  ILEC
+## 1632  20.93  ILEC
+## 1633  23.92  ILEC
+## 1634  21.38  ILEC
+## 1635   0.00  ILEC
+## 1636  14.40  ILEC
+## 1637   0.52  ILEC
+## 1638  19.45  ILEC
+## 1639  22.63  ILEC
+## 1640   0.47  ILEC
+## 1641  46.37  ILEC
+## 1642  24.25  ILEC
+## 1643   0.00  ILEC
+## 1644  35.57  ILEC
+## 1645   0.00  ILEC
+## 1646   1.52  ILEC
+## 1647   6.65  ILEC
+## 1648  16.18  ILEC
+## 1649   0.25  ILEC
+## 1650  19.28  ILEC
+## 1651   0.00  ILEC
+## 1652  14.30  ILEC
+## 1653  18.58  ILEC
+## 1654  23.68  ILEC
+## 1655   0.00  ILEC
+## 1656   0.00  ILEC
+## 1657   0.00  ILEC
+## 1658   0.00  ILEC
+## 1659   0.00  ILEC
+## 1660  23.70  ILEC
+## 1661  25.42  ILEC
+## 1662   4.83  ILEC
+## 1663   3.60  ILEC
+## 1664  18.13  ILEC
+## 1665  26.62  CLEC
+## 1666   8.60  CLEC
+## 1667   0.00  CLEC
+## 1668  21.15  CLEC
+## 1669   8.33  CLEC
+## 1670  20.28  CLEC
+## 1671  96.32  CLEC
+## 1672  17.97  CLEC
+## 1673   3.42  CLEC
+## 1674   0.07  CLEC
+## 1675  24.38  CLEC
+## 1676  19.88  CLEC
+## 1677  14.33  CLEC
+## 1678   5.45  CLEC
+## 1679   5.40  CLEC
+## 1680   2.68  CLEC
+## 1681   0.00  CLEC
+## 1682  24.20  CLEC
+## 1683  22.13  CLEC
+## 1684  18.57  CLEC
+## 1685  20.00  CLEC
+## 1686  14.13  CLEC
+## 1687   5.80  CLEC</code></pre>
+<pre class="r"><code>q_groups &lt;- Ver %&gt;%
+  group_by(Group)%&gt;%
+  summarise(Q3 = quantile(Time, probs = .75))
+
+
+
+
+
+
+ggplot(data = Ver, aes(x = Time))+
+  geom_density(aes(fill = Group))+
+  facet_grid(.~Group)+
+  scale_fill_manual(values = c(&quot;pink&quot;, &quot;lightblue&quot;))+
+  theme_bw()+
+  guides(fill= FALSE)+
+  geom_vline(data = q_groups, aes(xintercept = Q3, linetype = &quot;dotdash&quot;))</code></pre>
+<p><img src="Verizon_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

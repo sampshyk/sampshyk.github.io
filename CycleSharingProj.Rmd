@@ -208,8 +208,9 @@ Trip_Duration_Month %>%
 
 ```
 
-#Number of Trips by Day of Week
-```{r, , label = "dayOfWeekSeasons", fig.cap="Number of Trips by Day of Week", echo=FALSE}
+
+##Number of Trips by Day of Week
+```{r, label = "dayOfWeekSeasons", echo = FALSE, warning=FALSE, message=FALSE}
  trip_2$wd <- wday(trip_2$start_date, label = TRUE)
  tripduration_m <- (trip_2$tripduration)/60
  trip22<-trip_2
@@ -235,6 +236,63 @@ trip22 %>%
 
 ```
 
+##Number of Trips Per Time of Day
+
+```{r, label = "timeOfDaySeasons3", message = FALSE, warnings = FALSE, echo = FALSE}
+
+trip22 %>%
+  group_by(Hour = hour(start_dt), Season, wd) %>%
+  summarize(N = n()) %>%
+ ggplot(aes(x = Hour, y= N, color = Season, group = Season)) +
+  geom_point() +
+  geom_line() + 
+  facet_wrap(~wd) + 
+  theme_bw() +
+  labs(x = "Hour of Day", y = "Number of Trips")
+
+```
+
+##Number of Trips by Member Type
+```{r, label = "timeOfDaySeasons2", message = FALSE, warnings = FALSE, echo = FALSE}
+
+trip22 %>%
+  filter(usertype !="") %>%
+  group_by(Season, usertype, ym) %>%
+  summarize(N = n()) %>%
+  ggplot(aes(x = ym, y = N, color = Season, group = usertype, fill = usertype)) + 
+  geom_point(aes(shape = usertype), size = 3) + 
+  geom_line() + 
+  theme_bw() + 
+  labs(x = "Date", y= "Total Number of Trips Per Month")
+
+```
+
+##Trip Duration by Member Type
+```{r, message = FALSE, warnings = FALSE, echo = FALSE}
+
+#Frequency histogram
+start_date_ym %>%
+  filter(usertype !="")%>%
+  ggplot(aes(x = tripduration, fill = usertype))+
+  geom_histogram() +
+  facet_grid(.~ usertype) + 
+  scale_fill_manual(values = c("pink", "light blue")) +
+  theme_bw() +
+  guides(fill = FALSE) +
+  geom_vline(aes(xintercept = quantile(tripduration, prob = 0.75)), linetype = "dashed")
+
+
+
+```
+
+##Member Demographics
+```{r, label = "timeOfDaySeasons1", message = FALSE, warnings = FALSE, echo = FALSE}
+
+trip_2$usertype <- as.factor(trip_2$usertype)
+trip_age <- trip_2 %>% mutate(age = year(start_dt) - birthyear)
+
+hist(trip_age$age, main = "Member Age", xlab = "Number of Riders", 
+    col = "red", breaks = 25)
 
 
 ```{r, eval=FALSE, label = "timeOfDaySeasons", fig.cap="Number of Trips by Time of Day", message = FALSE, echo=FALSE}
@@ -271,57 +329,15 @@ ggplot(trip_cost, aes(x = usertype)) + facet_grid(cost~.)
 ```
 
 
-```{r, eval = FALSE, echo = FALSE, message = FALSE}
+```{r, echo = FALSE, message = FALSE}
 #Members Demographic
 trip_2$usertype <- as.factor(trip_2$usertype)
 trip_age <- trip_2 %>% mutate(age = year(start_dt) - birthyear)
 
 hist(trip_age$age, main = "Member Age", xlab = "Number of Riders", 
      col = "#56B4E9", breaks = 25)
-
-
-
-
-#Trip routes
-# Create a dataframe with only station ID, latitude, and
-# longitude
-station_coord <- station %>% select(station_id, lat, long)
-
-# Trim our trip dataframe to only include start & stop
-# dates/times, and station ID
-trip_route <- trip_2 %>% select(trip_id, starts_with("start_"), 
-                                starts_with("stop_"), from_station_id, to_station_id, tripduration)
-
-# Match by station ID
-trip_route$start_lat <- station_coord[match(trip_route$from_station_id, 
-                                            station_coord$station_id), "lat"]
-
-trip_route$start_long <- station_coord[match(trip_route$from_station_id, 
-                                             station_coord$station_id), "long"]
-
-trip_route$stop_lat <- station_coord[match(trip_route$to_station_id, 
-                                           station_coord$station_id), "lat"]
-
-trip_route$stop_long <- station_coord[match(trip_route$to_station_id, 
-                                            station_coord$station_id), "long"]
-
-
-
-# Converting trip duration to minutes
-trip_route$tripduration <- trip_route$tripduration/60
-
-# Finding actual trip duration
-trip_route[1, "tripduration"]
-
-
-leg_1 %>% group_by(route) %>% summarise(duration = sum(minutes))
-
-trip_route[nrow(trip_route), "tripduration"]
-
-
-
-leg_2 %>% group_by(route) %>% summarise(duration = sum(minutes))
 ```
+
 
 
 
