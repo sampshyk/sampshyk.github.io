@@ -11,8 +11,8 @@ navbar:
     href: "Photograph.html"
   - text: "Judging Resources"
     href: judging_resources.html
-  - text: "Cycle Sharing"
-    href: CycleSharingProj.html
+  - text: "Projects"
+    href: bigstuff.html
   right:
   - icon: ion-social-github
     href: https://github.com/sampshyk/sampshyk.github.io
