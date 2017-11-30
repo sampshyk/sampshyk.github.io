@@ -294,6 +294,7 @@ trip_age <- trip_2 %>% mutate(age = year(start_dt) - birthyear)
 hist(trip_age$age, main = "Member Age", xlab = "Number of Riders", 
     col = "red", breaks = 25)
 
+```
 
 ```{r, eval=FALSE, label = "timeOfDaySeasons", fig.cap="Number of Trips by Time of Day", message = FALSE, echo=FALSE}
 #Number of Trips Per Time of Day
@@ -310,6 +311,22 @@ start_date_ym%>%
 
 ```
 
+```{r, echo = FALSE, message = FALSE, warnings = FALSE}
+start_date_ym <- start_date_ym %>% mutate(cost = ifelse(usertype == "Member" & tripduration_m <= 45,0, ifelse(usertype == "Member" & tripduration_m > 45 & tripduration_m <= 75, 2,ifelse(usertype == "Member" & tripduration_m > 75, (2 + 2*ceiling((tripduration_m -75)/30)), ifelse(usertype == "Short-Term Pass Holder" & tripduration_m <= 30, 0, ifelse(usertype == "Short-Term Pass Holder" & tripduration_m > 30 & tripduration_m < 60, 2, ifelse(usertype == "Short-Term Pass Holder" & tripduration_m > 60, (2 + 5 * ceiling((tripduration_m - 60)/30)), NA)))))))
+  
+  
+start_date_ym %>%
+  filter(cost > 0) %>%
+ggplot(aes(x = cost, fill = usertype)) +
+  geom_histogram() +
+  facet_grid(.~ usertype) +
+  scale_fill_manual(values = c("pink", "lightblue")) +
+  guides(fill = F) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(x = "Additional Fee($)")
+
+```
 
 ```{r, eval = FALSE, echo = FALSE, message = FALSE}
 #Trip Duration by Member Type
@@ -338,82 +355,154 @@ hist(trip_age$age, main = "Member Age", xlab = "Number of Riders",
      col = "#56B4E9", breaks = 25)
 ```
 
-
-
-
-
-
-```{r, eval = FALSE, echo = FALSE, message = FALSE}
-#weather data stuff
+```{r, label = "temps min", message = FALSE, warnings = FALSE, echo = FALSE}
 str(weather)
+
 # Adjusting the Date Variable
 weather$Date <- mdy(weather$Date)
 
 # Adjusting the Events Variable
 weather$Events <- as.factor(weather$Events)
 
-#Let’s combine a few of these things that seem to represent the same event.
+
+levels(weather$Events)
+
 weather$Events <- gsub("Fog , Rain|Fog-Rain", "Fog-Rain", weather$Events)
 weather$Events <- gsub("Rain , Snow|Rain-Snow", "Rain-Snow", 
-                       weather$Events)
+    weather$Events)
 weather$Events <- gsub("Rain , Thunderstorm|Rain-Thunderstorm", 
-                       "Rain-TS", weather$Events)
+    "Rain-TS", weather$Events)
 
 weather$Events <- as.factor(weather$Events)
-
 
 weather$Max_Gust_Speed_MPH <- gsub("-", 0, weather$Max_Gust_Speed_MPH)
 
 weather$Max_Gust_Speed_MPH <- as.numeric(weather$Max_Gust_Speed_MPH)
 
-
-
 weather[which(is.na(weather$Mean_Temperature_F)), 1]
-
-
-weather[490, "Mean_Temperature_F"] <- "50"
+weather[490, "Mean_Temperature_F"] <- 50
 
 weather$Events <- gsub("^$", "Other", weather$Events)
 weather$Events <- as.factor(weather$Events)
 
 
 
-#weather and trip data combo
+weather %>% 
+  
+  group_by(Date) %>%
+  
+  ggplot(aes(x = Date, y = Min_TemperatureF)) + 
+  
+  geom_line() + 
+  
+  labs(x = "Date", y = "Minimum Temperature (F)") + 
+  
+  theme_bw() 
+
+
+```
+
+##Mean Temps
+```{r, label = "temp means", message = FALSE, warnings = FALSE, echo = FALSE}
+
+weather %>% 
+  
+  group_by(Date) %>%
+  
+  ggplot(aes(x = Date, y = as.numeric(Mean_Temperature_F))) + 
+  
+  geom_line() + 
+  
+  labs(x = "Date", y = "Mean Temperature (F)") + 
+  
+  theme_bw() 
+ 
+
+
+```
+
+
+##Max Temps
+```{r, label = "temps max", message = FALSE, warnings = FALSE, echo = FALSE}
+
+weather %>% 
+  
+  group_by(Date) %>%
+  
+  
+  ggplot(aes(x = Date, y = Max_Temperature_F)) + 
+  
+  geom_line() + 
+  
+  labs(x = "Date", y = "Maximum Temperature (F)") + 
+  
+  theme_bw() 
+
+```
+
+
+##Events
+```{r,, message = FALSE, warnings = FALSE, echo = FALSE}
+str(weather)
+
+weather %>%
+  ggplot(aes(x = as.factor(Events)))+
+  geom_bar(fill = "red2")+
+  labs(x = "Events", y = "Number of Events") +
+  theme_bw()
+```
+
+
+##Mean Temperature vs. Number of Trips
+```{r, label = "Number of Trips", message = FALSE, warnings = FALSE, echo = FALSE}
 # Make a copy of the data frame
-trip_3 <- trip_2
+trip_3 <- trip22
 
 # Change column name in trip_3 to match weather dataset
 trip_3$Date <- trip_3$start_date
 
 # Left join the trip and weather dataframes by date.
 trip_weather <- left_join(trip_3, weather, by = "Date")
+
+
+trip_weather %>%
+  mutate(Mean_Temperature_F5 = 5*round(Mean_Temperature_F/5))%>%
+  group_by(Mean_Temperature_F5) %>%
+  summarize(N = n()) %>%
+  ggplot(aes(x = Mean_Temperature_F5, y = N)) +
+    geom_line() + 
+    theme_bw() + 
+    labs(x = "Temperature (Rounded to Nearest 5 degrees F)", y = "Number of Trips")
+
 ```
 
+## Normalize
+```{r, label = "Number of Trips/Number of days at Temp", message = FALSE, warnings = FALSE, echo = FALSE}
 
-
-
-```{r, eval = FALSE, echo = FALSE}
-#Analysis
+trip_weather %>%
+  mutate(Mean_Temperature_F5 = 5*round(Mean_Temperature_F/5))%>%
+  group_by(Mean_Temperature_F5) %>%
+  summarize(N = n(), Days = n_distinct(Date)) %>%
+  mutate(Ratio = N/Days)%>%
+  ggplot(aes(x = Mean_Temperature_F5, y = Ratio)) +
+    geom_line() + 
+    theme_bw() + 
+    labs(x = "Temperature (Rounded to Nearest 5 degrees F)", y = "Number of Trips / Number of Days at Temperature")
 
 ```
 
+##Precipitation vs. Number of Trips
+```{r, message = FALSE, warnings = FALSE, echo = FALSE}
 
+trip_weather %>%
+  mutate(Precipitation_In.2 = .2*round(Precipitation_In/.2))%>%
+  group_by(Precipitation_In.2) %>%
+  summarize(N = n(), Days = n_distinct(Date)) %>%
+  mutate(Ratio = N/Days)%>%
+  ggplot(aes(x = Precipitation_In.2, y = Ratio)) +
+  geom_line() +
+  theme_bw() +
+  labs(x = "Precipitation (Rounded to the Nearest 0.2 Inches)", y = "Number of Trips / Number of Days at Precipitation Level")
 
-```{r, eval = FALSE, echo = FALSE}
-
-#our direction
-
-# looking into wind speed and trips
-# blah blah blah
 ```
-
-
-
-
-
-
-
-
-
-
 
