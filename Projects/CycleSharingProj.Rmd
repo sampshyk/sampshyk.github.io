@@ -1,11 +1,11 @@
 ---
 title: "Seattle's Cycle Sharing Analysis"
 author: "Hannah Xiao Si Laws, Sammy Pshyk, Megan Gillis"
-output: html_document
+output: bookdown::html_document2
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center")
 ```
 
 
@@ -42,26 +42,15 @@ trip <- read.csv(file = "trip.csv", header = TRUE,
 weather <- read.csv(file = "weather.csv", header = TRUE, 
                     stringsAsFactors = FALSE)
 ```
-## **Introduction**
+# **Introduction**
 This report and analysis on Seattle's bicycle sharing trends. The data includes weather reports for the area, the station locations, and trips taken by cycle riders. Future explorations could include the addition of other forms of public transportation for the Seatle area to better understand commuter travel trends.
 
-## **Station Locations**
-Lets take a look at where the rental stations are located in Seattle!
+# **Station Locations**
+Lets take a look at where the rental stations are located in Seattle! See Figure \@ref(fig:stationLocs) 
 
-```{r, label = "stationLocs", echo=FALSE}
+```{r, label = "stationLocs", echo=FALSE, fig.cap="Station Locations"}
 #For show (the graphs , THE EVI-DANCE) Formating the dates
 station$install_date <- mdy(station$install_date)
-
-
-# How many times were new stations installed?
-station %>% summarise(n_distinct(install_date))
-# How many stations were installed on each date
-station %>% group_by(install_date) %>% summarise(count = n()) %>% 
-  arrange(install_date)
-
-
-
-station %>% summarise(n_distinct(station_id))
 
 station_locs <- station %>% group_by(station_id) %>% select(1:4, -2)
 
@@ -71,9 +60,9 @@ mymap <- get_map(location = c(lat = 47.60, lon = -122.35), maptype = "roadmap", 
 ggmap(mymap) + geom_point(aes(x = long, y = lat), data = station_locs, 
                           alpha = 1, color = "darkred", size = 2)
 ```
+It looks like all those locations are pretty centralized. Lets take a closer look by zooming in in Figure 2.2 \@ref(fig:closeUp)
 
-
-```{r, label = "closeUp", fig.cap= "Stations map Zoomed In", warning=FALSE, message=FALSE}
+```{r, label = "closeUp", fig.cap= "Stations map Zoomed In", warning=FALSE, message=FALSE, echo=FALSE}
 closeUp <- get_map(location = "Seattle", maptype = "roadmap", zoom = 13)
 
 # Plot a single point for each Station ID
@@ -82,10 +71,9 @@ ggmap(closeUp) + geom_point(aes(x = long, y = lat), data = station_locs,
 ```
 
 
-Look at all those stations!
+Look at all those stations! Looks like plenty of places to pick up a bicycle! Lets take a closer look at the some of the station's statistics.
 
-
-## Histogram of Number of Bikes per Station
+# Histogram of Number of Bikes per Station
 
 ```{r, label = "nbs", fig.cap = "Current Dock Count", echo = FALSE, message = FALSE}
 #histogram showing current dock count
@@ -94,7 +82,7 @@ ggplot(data = station, aes (x = current_dockcount)) +
   theme_classic() +
   labs( x = "Number of bikes per station", y= "count", title = "Current Dock Count")
 ```
-Here is a histogram of the number of bikes per station. 
+Here is a histogram of the number of bikes per station. Some stations definitely have more bikes than others. Lets take a look at how some of these stations have had to expand to accomodate increased traffic. No one wants to show up at a destination where they can't leave they're bike!
 
 
 
@@ -116,7 +104,7 @@ ggmap(closeUp) +
   guides(color = guide_legend(title = "change"), size = guide_legend(title = "change")) +
   scale_size_manual(values = 10:1)
 ```
-Here is a map of how many times dock changed occured per station. 
+Not many of those kept the same number but lets see how many times each station had a change in its number of stations.
 
 ```{r, label = "currentStationSize", fig.cap="Current Station Size", warning = FALSE, message = FALSE, echo=FALSE}
 currDockSize <- station %>% 
@@ -133,9 +121,12 @@ ggmap(closeUp) +
 ```
 
 
-11 stations lost bike docks, 39 docks stayed the same, 8 stations gained docks.
+It looks like 11 stations lost bike docks, 39 docks stayed the same,  and 8 stations gained docks. Now that we have our stations and docks worked out, lets take a look at the trip data. 
 
+#Trips
+Let's start by looking at or number of trips per day.
 
+## Number of Trips per Day
 ```{r, label = "visualRidesPerDay", fig.cap="Time to visualize the number of rides per day", message = FALSE, echo=FALSE}
 # Make the start and stop dates into POSIXct objects
 trip_2 <- trip %>% mutate(start_dt = mdy_hm(starttime), stop_dt = mdy_hm(stoptime))
@@ -166,8 +157,9 @@ trip_2 %>%
 
 
 ```
+We can definitely see a drop during the colder winter months and a steady rise during the spring. It's curious to think on that day in March when they had a sudden drop in trips. Maybe it was a particularly cold day. Lets move on and see how the number of trips changes by month with Figure \@ref(fig:monthSeason)
 
-#Plotting trips per month (by season, minus summer)
+##Plotting trips per month (by season, minus summer)
 ```{r, label = "monthSeason", fig.cap="Trips Per Month (By Season)", echo=FALSE}
 start_date_ym <- trip_2 %>% 
   mutate(ym = paste(year(start_date), 
@@ -183,10 +175,11 @@ start_date_ym %>%
   geom_line(group = 1) + 
   labs( x = "Date", y = "Number of Trips(per month)")
 ```
-
-
-
-# Convert Trip Duration from Seconds to Minutes
+Wow that isn't what I would expect. We can see a clear rise in trips during the month of March. Not entirely sure what is happening there. 
+# Trip Durations
+Now that we have an idea of how many trips there were during each month, lets take a look at how those trips break down. 
+## Average Trip Duration by Date
+Lets take a look at how the month affects the average trip duration. 
 ```{r, label = "minutesSeason", fig.cap="Average Trip Duration", echo=FALSE}
 Trip_Duration_Month <- start_date_ym %>% 
   mutate(trip_duration_min = tripduration/60) %>% 
@@ -207,8 +200,11 @@ Trip_Duration_Month %>%
   geom_errorbar(aes(ymin = Avg - se, ymax = Avg + se))
 
 ```
+As we can see in Figure \@ref(fig:minuteSeason), the average trip duration was pretty consistant between the months with the exception of January which saw a noticably smaller trip duration which were consistantly smaller.
 
-
+Next lets look at how trips break down by day of the week .
+# Day of the Week
+Lets see how the day of the week affects the trips. We'll begin with looking at comparison of the number of trips by day of the week. 
 ##Number of Trips by Day of Week
 ```{r, label = "dayOfWeekSeasons", echo = FALSE, warning=FALSE, message=FALSE}
  trip_2$wd <- wday(trip_2$start_date, label = TRUE)
@@ -235,7 +231,7 @@ trip22 %>%
 
 
 ```
-
+We can see from this graph that the summer saw the most trips and there was a relatively larger number of trips on Thursday. 
 ##Number of Trips Per Time of Day
 
 ```{r, label = "timeOfDaySeasons3", message = FALSE, warnings = FALSE, echo = FALSE}
@@ -251,7 +247,9 @@ trip22 %>%
   labs(x = "Hour of Day", y = "Number of Trips")
 
 ```
-
+from this graph we can get some insite into what people are traveling for. On Saturday and  Sunday we see a most of our trips taking place in the afternoon. During Weekdays, we see more trips occuring during early morning and later afternoon. Perhaps these bikes are being used for commuting to work on weekdays.
+# Member Type
+This bicycle sharing company has two types of bike rentals which effect the price. Members recieve a cheaper ride while being a short term pass holder costs a little more. Lets see how being a member effects the ammount of rides people take. 
 ##Number of Trips by Member Type
 ```{r, label = "timeOfDaySeasons2", message = FALSE, warnings = FALSE, echo = FALSE}
 
@@ -266,7 +264,7 @@ trip22 %>%
   labs(x = "Date", y= "Total Number of Trips Per Month")
 
 ```
-
+With this graph we can see a higher number of members using the bikes over short term pass holders. 
 ##Trip Duration by Member Type
 ```{r, message = FALSE, warnings = FALSE, echo = FALSE}
 
@@ -284,8 +282,9 @@ start_date_ym %>%
 
 
 ```
-
+It seems that members also have a more consistant spread of trip durations compaired to short term pass holders.
 ##Member Demographics
+Lets take a look at the spread of members by age to get a better idea of the people who ride the shared bikes are. 
 ```{r, label = "timeOfDaySeasons1", message = FALSE, warnings = FALSE, echo = FALSE}
 
 trip_2$usertype <- as.factor(trip_2$usertype)
@@ -295,6 +294,8 @@ hist(trip_age$age, main = "Member Age", xlab = "Number of Riders",
     col = "red", breaks = 25)
 
 ```
+It looks like most of our members are in their late twenties to early thirties. 
+
 
 ```{r, eval=FALSE, label = "timeOfDaySeasons", fig.cap="Number of Trips by Time of Day", message = FALSE, echo=FALSE}
 #Number of Trips Per Time of Day
@@ -310,8 +311,9 @@ start_date_ym%>%
 
 
 ```
-
-```{r, echo = FALSE, message = FALSE, warnings = FALSE}
+# Fees
+Lets take a look at the amount of fees each user type racks up. Since members don't get charged for trips less than 45 minutes, they should have fewer fees.
+```{r, echo = FALSE, message = FALSE, warnings = FALSE, fig.cap= "Fees By Member Typer",label = "fees"}
 start_date_ym <- start_date_ym %>% mutate(cost = ifelse(usertype == "Member" & tripduration_m <= 45,0, ifelse(usertype == "Member" & tripduration_m > 45 & tripduration_m <= 75, 2,ifelse(usertype == "Member" & tripduration_m > 75, (2 + 2*ceiling((tripduration_m -75)/30)), ifelse(usertype == "Short-Term Pass Holder" & tripduration_m <= 30, 0, ifelse(usertype == "Short-Term Pass Holder" & tripduration_m > 30 & tripduration_m < 60, 2, ifelse(usertype == "Short-Term Pass Holder" & tripduration_m > 60, (2 + 5 * ceiling((tripduration_m - 60)/30)), NA)))))))
   
   
@@ -327,7 +329,7 @@ ggplot(aes(x = cost, fill = usertype)) +
   labs(x = "Additional Fee($)")
 
 ```
-
+In general we see that members do recieve fewer fees overall and typically don't have many expensive ones. 
 ```{r, eval = FALSE, echo = FALSE, message = FALSE}
 #Trip Duration by Member Type
 trip_cost <- trip_2 %>% mutate(cost = ifelse(usertype == "Member" & tripduration_m <= 45, 0, 
@@ -346,7 +348,7 @@ ggplot(trip_cost, aes(x = usertype)) + facet_grid(cost~.)
 ```
 
 
-```{r, echo = FALSE, message = FALSE}
+```{r, echo = FALSE, message = FALSE, eval= FALSE}
 #Members Demographic
 trip_2$usertype <- as.factor(trip_2$usertype)
 trip_age <- trip_2 %>% mutate(age = year(start_dt) - birthyear)
@@ -354,9 +356,10 @@ trip_age <- trip_2 %>% mutate(age = year(start_dt) - birthyear)
 hist(trip_age$age, main = "Member Age", xlab = "Number of Riders", 
      col = "#56B4E9", breaks = 25)
 ```
-
-```{r, label = "temps min", message = FALSE, warnings = FALSE, echo = FALSE}
-str(weather)
+# Weather
+One of the big factors as to whether or not people want to go out and ride bicycles is the weather. Lets start off by looking at the temperature
+## Daily Minimum Temperature
+```{r, label = "temps min", message = FALSE, warnings = FALSE, echo = FALSE, fig.cap= "Minimum Daily Temp"}
 
 # Adjusting the Date Variable
 weather$Date <- mdy(weather$Date)
@@ -364,8 +367,6 @@ weather$Date <- mdy(weather$Date)
 # Adjusting the Events Variable
 weather$Events <- as.factor(weather$Events)
 
-
-levels(weather$Events)
 
 weather$Events <- gsub("Fog , Rain|Fog-Rain", "Fog-Rain", weather$Events)
 weather$Events <- gsub("Rain , Snow|Rain-Snow", "Rain-Snow", 
@@ -402,8 +403,8 @@ weather %>%
 
 ```
 
-##Mean Temps
-```{r, label = "temp means", message = FALSE, warnings = FALSE, echo = FALSE}
+##Mean Temperature
+```{r, label = "temp means", message = FALSE, warnings = FALSE, echo = FALSE, fig.cap = "Mean Daily Temp"}
 
 weather %>% 
   
@@ -422,8 +423,8 @@ weather %>%
 ```
 
 
-##Max Temps
-```{r, label = "temps max", message = FALSE, warnings = FALSE, echo = FALSE}
+##Max Temperature
+```{r, label = "temps max", message = FALSE, warnings = FALSE, echo = FALSE, fig.cap = "Max Daily Temp"}
 
 weather %>% 
   
@@ -439,7 +440,7 @@ weather %>%
   theme_bw() 
 
 ```
-
+Now that we have an idea for our temperature by day, lets get a look at our weather patterns. Rain would be a good reason for someone to not want to go out and ride bicycles. 
 
 ##Events
 ```{r,, message = FALSE, warnings = FALSE, echo = FALSE}
@@ -451,7 +452,7 @@ weather %>%
   labs(x = "Events", y = "Number of Events") +
   theme_bw()
 ```
-
+That is definitely a lot of rain and other events. Next lets look the number of trips and the temperature. 
 
 ##Mean Temperature vs. Number of Trips
 ```{r, label = "Number of Trips", message = FALSE, warnings = FALSE, echo = FALSE}
@@ -475,7 +476,7 @@ trip_weather %>%
     labs(x = "Temperature (Rounded to Nearest 5 degrees F)", y = "Number of Trips")
 
 ```
-
+It looks like most trips occur when its around 50 degrees outside. Next lets try to normalize the data to see how temperature really affects the number of trips. 
 ## Normalize
 ```{r, label = "Number of Trips/Number of days at Temp", message = FALSE, warnings = FALSE, echo = FALSE}
 
@@ -490,8 +491,9 @@ trip_weather %>%
     labs(x = "Temperature (Rounded to Nearest 5 degrees F)", y = "Number of Trips / Number of Days at Temperature")
 
 ```
-
+In this graph we see that there are a lot more trips on days when it's warmer outside. Colder days saw a fewer number of days. 
 ##Precipitation vs. Number of Trips
+Finally lets take a look at the number of trips and how rain effects that. 
 ```{r, message = FALSE, warnings = FALSE, echo = FALSE}
 
 trip_weather %>%
@@ -505,4 +507,4 @@ trip_weather %>%
   labs(x = "Precipitation (Rounded to the Nearest 0.2 Inches)", y = "Number of Trips / Number of Days at Precipitation Level")
 
 ```
-
+Not suprisingly, there are fewer trips on days where there is more rain. 
