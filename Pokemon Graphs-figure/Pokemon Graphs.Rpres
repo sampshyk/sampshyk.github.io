@@ -1,0 +1,43 @@
+Is There a Power Creep in Pokemon?
+========================================================
+author: Sammy Pshyk
+date: 12/9/17
+autosize: true
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center", fig.width = 40, fig.height = 15)
+```
+Factors In Determining Strength
+========================================================
+- Smogon Tier
+- Total Base Stats
+- Typing
+
+Looking at the Total Stats Of Non- Megas
+========================================================
+```{r, echo= FALSE}
+library(ggplot2)
+library(dplyr)
+tier <- read.csv(file = "smogon.csv", header = TRUE, 
+                    stringsAsFactors = FALSE)
+tier %>% 
+  filter(Mega == FALSE)%>%
+  ggplot(aes(x = X. , y = Total, col = Generation))+
+  geom_line()
+
+  
+```
+
+Looking at Gen by Tier List
+========================================================
+
+```{r, echo=FALSE}
+formats <- c("NU", "OU", "PU", "RU", "Uber", "UU")
+tier %>%
+  select(Generation, Tier)%>%
+  filter(Tier == formats)%>%
+  ggplot(aes(x = Generation, fill = Tier))+
+  geom_histogram()+
+  facet_grid(.~Tier)+
+  theme_bw()
+
+```
