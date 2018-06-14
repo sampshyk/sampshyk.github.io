@@ -7,8 +7,6 @@ navbar:
     href: index.html
   - text: "Build Notes"
     href: page2.html
-  - text: "Photos"
-    href: "Photograph.html"
   - text: "Judging Resources"
     href: judging_resources.html
   - text: "Projects"
