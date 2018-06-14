@@ -1,11 +1,10 @@
 ---
 title: "My Website"
 author: "Samuel Pshyk"
-date: "9/7/2017"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-My Name is Samuel Pshyk. I am a Physics major at Appalachian State University. 
+My Name is Samuel Pshyk. I am a recent graduate of Appalachain State University with a degree in Engineering Physics. 

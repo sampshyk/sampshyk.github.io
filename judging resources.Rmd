@@ -31,5 +31,5 @@ Here are some links to some rules related articles on PSCT and the most recent v
 This chart is one of the most important things to understand in Yu-Gi-Oh!. It is the fast effect timing chart and is a graphic which allows us to understand the breakdown of how the gamestate functions. As a judge, it helps answer many player questions when players inadvertantly create improper gamestates for one reason or another. 
 
 ```{r, echo=FALSE}
-knitr::include_graphics("./img/flow_chart.jpeg")
+knitr::include_graphics("./img/flow_chart.jpeg/")
 ```

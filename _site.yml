@@ -1,9 +1,9 @@
-name: "my-website"
-output_dir: "."
+name: my-website
+output_dir: '.'
 navbar:
-  title: "My Page"
+  title: My Page
   left:
-  - text: "Home"
+  - text: Home
     href: index.html
   - text: "Build Notes"
     href: page2.html
@@ -21,3 +21,6 @@ output:
   html_document:
     theme: cosmo
     highlight: textmate
+    lib_dir: site_libs
+    self_contained: no
+
